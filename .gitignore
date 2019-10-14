@@ -1,3 +1,5 @@
+.vscode
+.idea
 # ---> WordPress
 *.log
 wp-config.php
