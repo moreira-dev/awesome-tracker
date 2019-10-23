@@ -22,10 +22,6 @@
 if ( ! defined( 'WPINC' ) )
     die;
 
-
-if( class_exists ('AwesomeTracker') )
-    return;
-
 define( 'AWESOME_TRACKER_VERSION', '1.0.0' );
 
 
@@ -55,17 +51,24 @@ Class AwesomeTracker{
      */
     const TBL_VISITS = 'awesome_tracker_visits';
 
+    /**
+     * Name for the taxonomies visits DB Table
+     */
+    const TBL_TAXVISITS = 'awesome_tracker_tax_visits';
+
 
     /**
      * Load required files and initialice plugin vars
      */
     public static function init(){
-        AwesomeTrackerRequires::load();
-
         self::$plugin_dir = plugin_dir_path(__FILE__);
         self::$plugin_url = plugins_url('', __FILE__);
 
+        AwesomeTrackerRequires::load();
+
         register_activation_hook( __FILE__, 'AwesomeTracker::activate' );
+
+        AwesomeTrackerHooks::add_actions();
     }
 
     public static function activate(){
@@ -73,6 +76,8 @@ Class AwesomeTracker{
         AwesomeTrackerActivator::create_tables();
 
         update_option('awesome_tracker_version', AWESOME_TRACKER_VERSION);
+
+
 
     }
 
