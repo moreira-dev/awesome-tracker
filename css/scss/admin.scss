@@ -1,0 +1,74 @@
+.tablenav .actions.bulkactions {
+  overflow: visible;
+}
+
+.at_chosen_user {
+  min-width: 300px;
+}
+.at_users_filter_wrap{
+  display:inline-block;
+}
+body .chosen-container-single .chosen-single{
+  height: 28px;
+  line-height: 25px;
+  border-radius: 3px;
+}
+.button.csv-export, .wp-core-ui .button.csv-export{
+  margin-right: 10px;
+  line-height: 1;
+  padding-bottom: 0;
+  > span.dashicons{
+    vertical-align: top;
+    margin-right: 3px;
+    width: 15px;
+    height: 14px;
+    font-size: 17px;
+  }
+}
+
+#records_form{
+  .actions{
+    margin-bottom: 10px;
+  }
+}
+
+
+
+#visit-data{
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  @media screen and (max-width: 782px){
+    flex-direction: column;
+  }
+  > .col{
+    flex-basis: calc(1/2*100% - (1 - 1/2)*15px);
+    margin-bottom: 20px;
+  }
+}
+
+.at-info{
+  border: 1px solid #ccc;
+  padding: 0;
+  height: 100%;
+  h2{
+    margin: 0;
+    padding: 15px;
+    background: white;
+    border-bottom: 1px solid #ccc;
+  }
+  .at-body{
+    padding: 0 15px;
+    background: #f3f3f3;
+    @media screen and (max-width: 782px){
+      padding-bottom: 15px;
+    }
+  }
+  .at-wrap{
+    > table{
+      width: 100%;
+    }
+  }
+}

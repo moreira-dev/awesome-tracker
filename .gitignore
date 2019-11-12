@@ -20,4 +20,8 @@ wp-content/plugins/hello.php
 /sitemap.xml
 /sitemap.xml.gz
 
+#js
+node_modules
+dist
+
 

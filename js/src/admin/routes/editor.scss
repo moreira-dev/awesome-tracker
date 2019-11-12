@@ -1,0 +1,174 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+.new-route{
+	margin-top: 25px;
+}
+
+.at-table{
+	width: 100%;
+	border-spacing: 0;
+	border-collapse: collapse;
+	table-layout: fixed;
+	margin: 10px 0 20px;
+	border: 1px solid $grayDark;
+
+	th, td{
+		text-align: left;
+		padding: 10px;
+		border-right: 1px solid $grayDark;
+	}
+
+	@include for-portrait-down{
+		border:none;
+		th, td{
+			border:none;
+		}
+	}
+
+	th:first-of-type, td:first-of-type,
+	th:nth-last-child(2), td:nth-last-child(2),
+	th:last-of-type, td:last-of-type{
+		border:none;
+	}
+
+	th{
+		padding-top: 20px;
+		padding-bottom: 20px;
+		background: white;
+	}
+
+	tbody tr:nth-child(odd){
+		background-color: $gray;
+		td, th{
+			background-color: $gray;
+		}
+
+		&.deprecated{
+			td, th{
+				background-color: $redLight;
+			}
+		}
+	}
+
+	tr.deprecated td{
+		background-color: $redLight;
+	}
+
+	.deprecated-alert{
+		display: block;
+		color:$red;
+		font-weight: bold;
+	}
+
+	.api-route{
+		width:40%;
+		@include for-portrait-down{
+			width: auto;
+		}
+	}
+	.api-method{
+		width:20%;
+		@include for-portrait-down{
+			width: auto;
+		}
+	}
+	.api-argument{
+		width:20%;
+		@include for-portrait-down{
+			width: auto;
+		}
+	}
+
+	tr.apiCalling td{
+		.components-spinner{
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			bottom: 0;
+			margin: 0;
+			background: white;
+			z-index:2;
+			opacity: 1;
+			&:before{
+				background-color: $black;
+			}
+		}
+	}
+
+	@include for-portrait-up{
+		tr.apiCalling td{
+			position: relative;
+			&:before{
+				@include overlay;
+			}
+			.components-spinner{
+				right: 15px;
+			}
+		}
+	}
+
+	@include for-portrait-down{
+		td:not([data-title]){
+			padding-left: 0!important;
+		}
+		tr.deprecated, tbody tr:nth-child(odd).deprecated{
+			background-color: $redLight;
+		}
+		tr.apiCalling{
+			position: relative;
+			&:before{
+				@include overlay;
+			}
+
+			td .components-spinner{
+				left:50%;
+				right: auto;
+				transform: translate(-50%);
+			}
+		}
+	}
+
+	.icon-action{
+		width: 33px;
+	}
+	.button-action{
+		width: 90px;
+	}
+
+	.at_select, .at_input{
+		margin:0;
+		width: 100%;
+	}
+
+	.delete-button{
+		svg{
+			color:$red;
+		}
+	}
+
+	.edit-button{
+		svg{
+			color:$blue;
+		}
+	}
+
+}
+
+.at-modal{
+	text-align: right;
+	p{
+		text-align: left;
+	}
+	.is-primary{
+		margin-left: 10px;
+	}
+	.errortext{
+		color:$red;
+		font-weight: bold;
+	}
+}

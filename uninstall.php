@@ -12,7 +12,3 @@ global $wpdb;
 $table_visits = $wpdb->prefix . AwesomeTracker::TBL_VISITS;
 
 $wpdb->query("DROP TABLE IF EXISTS {$table_visits}");
-
-$table_taxvisits = $wpdb->prefix . AwesomeTracker::TBL_TAXVISITS;
-
-$wpdb->query("DROP TABLE IF EXISTS {$table_taxvisits}");

@@ -1,0 +1,17 @@
+{
+  "name": "awesome-tracker-cgb-guten-block",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "cgb-scripts start",
+    "build": "cgb-scripts build",
+    "eject": "cgb-scripts eject"
+  },
+  "dependencies": {
+    "@wordpress/api-fetch": "^3.6.4",
+    "@wordpress/components": "^8.3.2",
+    "@wordpress/element": "^2.8.2",
+    "@wordpress/i18n": "^3.6.1",
+    "cgb-scripts": "1.21.0"
+  }
+}

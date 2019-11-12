@@ -1,0 +1,39 @@
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+
+// Colors.
+$black: rgb(41, 41, 41);
+$white: #f4f4f4;
+$gray: #f9f9f9;
+$grayDark: #ccc;
+$green: #bada55;
+$red: #d11a2a;
+$redLight: #f7dadd;
+$blue: #0085ba;
+
+
+
+@mixin for-portrait-down {
+	@media only screen and (max-width: 800px) { @content; }
+}
+
+@mixin for-portrait-up {
+	@media only screen and (min-width: 801px) { @content; }
+}
+
+@mixin overlay {
+	content: ' ';
+	position: absolute;
+	z-index: 1;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	top: 0;
+	background: rgba(0,0,0,0.5);
+}
+
+@import './scss/noMoreTables';

@@ -27,7 +27,7 @@ Class AwesomeTrackerLog{
         if(empty($query))
             $query = 1;
 
-        return self::log(array('404_query' => $query));
+        return self::log(array('query_404' => $query));
 
     }
 
@@ -97,107 +97,73 @@ Class AwesomeTrackerLog{
 
     }
 
+    /**
+     * Filter in the middle of an api call used to track the visit if conditions apply
+     *
+     * @param WP_HTTP_Response|WP_Error $response Result to send to the client. Usually a WP_REST_Response or WP_Error.
+     * @param array                     $handler  Route handler used for the request.
+     * @param WP_REST_Request           $request  Request used to generate the response.
+     *
+     * @return WP_HTTP_Response|WP_Error $response
+     */
+    static public function add_api_visit($response, $handler, $request){
+
+        $currentRoute = $request->get_route();
+        $currentMethod = strtolower($request->get_method());
+
+        $allRoutes = AT_Route::get_current_routes(true);
+
+        foreach ($allRoutes as $route => $methods ){
+            if(!preg_match('@^' . $route . '$@i', $currentRoute))
+                continue;
+
+            foreach ($methods as $method => $fieldToGet){
+                if(strpos($method,$currentMethod) === false)
+                    continue;
+
+                self::log_api_visit($request, $fieldToGet);
+
+                return $response;
+            }
+        }
+
+        return $response;
+    }
+
+    /**
+     * @param WP_REST_Request $request  Request used to generate the response.
+     * @param string          $fieldToGet Aditional field to get as post ID.
+     */
+    static private function log_api_visit($request, $fieldToGet){
+
+        $argsToLog = array(
+            'api_route' => $request->get_route(),
+            'api_method' => $request->get_method(),
+        );
+
+        if(!empty($fieldToGet) && !is_numeric($fieldToGet)){
+            $ID = $request->get_param( $fieldToGet );
+            if(is_numeric($ID) && !empty($ID))
+                $argsToLog['post_id'] = $ID;
+        }
+
+        self::log($argsToLog);
+    }
+
     static private function log($args = array()){
 
-        global $wpdb;
-        $table = $wpdb->prefix . AwesomeTracker::TBL_VISITS;
-        $is_tax = false;
-
-        if( (isset($args['taxonomy']) && $args['taxonomy'])
-            || (isset($args['term_id']) && $args['term_id']) ){
-                $table = $wpdb->prefix . AwesomeTracker::TBL_TAXVISITS;
-                $is_tax = true;
-        }
-
-        if(!isset($args['visited']) || empty($args['visited'])){
-            $args['visited'] = current_time('mysql');
-        }
-
-        if(!isset($args['ip']) || empty($args['ip'])){
-            $args['ip'] = self::get_client_ip();
-        }
 
         if( (!isset($args['user_id']) || empty($args['user_id']))
             && is_user_logged_in() ){
             $args['user_id'] = get_current_user_id()? get_current_user_id() : null;
         }
 
-        if(!isset($args['page']) || empty($args['page'])){
-            $args['page'] = 0;
-        }
+        $record = new AT_Record($args);
 
-        $data = array(
-            'user_id'   => $args['user_id'],
-            'ip'        => substr($args['ip'], 0, 45),
-            'visited'   => $args['visited'],
-            'page'      => $args['page']
-        );
+        if($record->save())
+            return true;
 
-        $format = array('%d','%s','%s','%d');
-
-        if($is_tax){
-            $data['term_id'] = isset($args['term_id'])? $args['term_id'] : null;
-            $format[] = '%d';
-            $data['taxonomy'] = isset($args['taxonomy'])? substr($args['taxonomy'], 0, 32) : null;
-            $format[] = '%s';
-        }else{
-            $data['is_home'] = isset($args['is_home'])? $args['is_home'] : 0;
-            $format[] = '%d';
-            $data['post_id'] = isset($args['post_id'])? $args['post_id'] : null;
-            $format[] = '%d';
-            $data['archive_ptype'] = isset($args['archive_ptype'])? substr($args['archive_ptype'], 0, 45)  : null;
-            $format[] = '%s';
-            $data['404_query'] = isset($args['404_query'])? substr($args['404_query'], 0, 45) : null;
-            $format[] = '%s';
-            $data['search_query'] = isset($args['search_query'])? substr($args['search_query'], 0, 45) : null;
-            $format[] = '%s';
-            $data['author_archive'] = isset($args['author_archive'])? $args['author_archive'] : null;
-            $format[] = '%d';
-            $data['date_archive'] = isset($args['date_archive'])? substr($args['date_archive'], 0, 45) : null;
-            $format[] = '%s';
-        }
-
-        //TODO prettify this
-
-        return $wpdb->insert(
-            $table,
-            $data,
-            $format
-            );
-
-    }
-
-
-    static private function get_client_ip(){
-
-        $ipaddress = '';
-
-        if (isset($_SERVER['HTTP_CLIENT_IP']) && $ipaddress = self::validate_ip($_SERVER['HTTP_CLIENT_IP'])) :
-        elseif(isset($_SERVER['HTTP_X_FORWARDED_FOR']) && $ipaddress = self::validate_ip($_SERVER['HTTP_X_FORWARDED_FOR'])) :
-        elseif(isset($_SERVER['HTTP_X_FORWARDED']) && $ipaddress = self::validate_ip($_SERVER['HTTP_X_FORWARDED'])) :
-        elseif(isset($_SERVER['HTTP_FORWARDED_FOR']) && $ipaddress = self::validate_ip($_SERVER['HTTP_FORWARDED_FOR'])) :
-        elseif(isset($_SERVER['HTTP_FORWARDED']) && $ipaddress = self::validate_ip($_SERVER['HTTP_FORWARDED'])) :
-        elseif(isset($_SERVER['REMOTE_ADDR']) && $ipaddress = self::validate_ip($_SERVER['REMOTE_ADDR'])) :
-        else :
-            $ipaddress = 'UNKNOWN';
-        endif;
-
-        return $ipaddress;
-
-    }
-
-    static private function validate_ip($ip){
-
-        $ip = trim($ip);
-
-
-        /**
-         * Check if valid and public IPv4 or IPv6
-         */
-        if(!filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE))
-            return false;
-
-        return $ip;
+        return false;
     }
 
 }

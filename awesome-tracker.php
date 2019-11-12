@@ -19,28 +19,31 @@
  */
 
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) )
+if (!defined('WPINC'))
     die;
 
-define( 'AWESOME_TRACKER_VERSION', '1.0.0' );
+define('AWESOME_TRACKER_VERSION', '1.0.0');
 
 
-require_once plugin_dir_path( __FILE__ ) . 'inc/init/class-at-requires.php';
+require_once plugin_dir_path(__FILE__) . 'inc/init/class-at-requires.php';
 
 
 AwesomeTracker::init();
 
 
-Class AwesomeTracker{
+Class AwesomeTracker {
 
     /**
      * Plugin directory, set in constructor.
+     *
      * @access public
      * @var string
      */
     public static $plugin_dir;
+
     /**
      * Plugin url, set in constructor.
+     *
      * @access public
      * @var string
      */
@@ -52,32 +55,32 @@ Class AwesomeTracker{
     const TBL_VISITS = 'awesome_tracker_visits';
 
     /**
-     * Name for the taxonomies visits DB Table
+     * Text domain. Unique identifier for retrieving translated strings.
      */
-    const TBL_TAXVISITS = 'awesome_tracker_tax_visits';
+    const TEXT_DOMAIN = 'awesome-tracker';
 
 
     /**
      * Load required files and initialice plugin vars
      */
-    public static function init(){
+    public static function init() {
+
         self::$plugin_dir = plugin_dir_path(__FILE__);
         self::$plugin_url = plugins_url('', __FILE__);
 
         AwesomeTrackerRequires::load();
 
-        register_activation_hook( __FILE__, 'AwesomeTracker::activate' );
+        register_activation_hook(__FILE__, 'AwesomeTracker::activate');
 
         AwesomeTrackerHooks::add_actions();
+        AwesomeTrackerHooks::add_filters();
     }
 
-    public static function activate(){
+    public static function activate() {
 
         AwesomeTrackerActivator::create_tables();
 
         update_option('awesome_tracker_version', AWESOME_TRACKER_VERSION);
-
-
 
     }
 
