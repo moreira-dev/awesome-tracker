@@ -14,7 +14,7 @@ if (!class_exists('AwesomeTrackerPageRecords')):
 
         public static function init_menu() {
 
-            self::$page_hook = add_submenu_page('awesome-tracker', __('Tracking Records', AwesomeTracker::TEXT_DOMAIN), __('Tracking Records', AwesomeTracker::TEXT_DOMAIN), 'manage_options', 'awesome-tracker', 'AwesomeTrackerPageRecords::generate');
+            self::$page_hook = add_submenu_page('awesome-tracker', __('Tracked Records', AwesomeTracker::TEXT_DOMAIN), __('Tracked Records', AwesomeTracker::TEXT_DOMAIN), 'manage_options', 'awesome-tracker', 'AwesomeTrackerPageRecords::generate');
             add_action('load-' . self::$page_hook, 'AwesomeTrackerPageRecords::init');
         }
 
@@ -61,7 +61,7 @@ if (!class_exists('AwesomeTrackerPageRecords')):
         }
 
         /**
-         * WP Table with tracking records
+         * WP Table with tracked records
          */
         public static function render_list() {
 
