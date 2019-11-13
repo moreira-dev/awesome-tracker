@@ -1,10 +1,10 @@
 <?php
 
-class AwesomeTrackerActivator
-{
-    public static function create_tables(){
+class AwesomeTrackerActivator {
 
-        require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+    public static function create_tables() {
+
+        require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
         global $wpdb;
 
         $charset_collate = $wpdb->get_charset_collate();
@@ -33,7 +33,21 @@ class AwesomeTrackerActivator
               KEY ip (ip)
             ) $charset_collate;";
 
-        dbDelta( $sql );
+        dbDelta($sql);
 
     }
+
+    public static function uninstall() {
+
+        delete_option('awesome_tracker_version');
+
+
+        global $wpdb;
+
+        $table_visits = $wpdb->prefix . AwesomeTracker::TBL_VISITS;
+
+        $wpdb->query("DROP TABLE IF EXISTS {$table_visits}");
+
+    }
+
 }

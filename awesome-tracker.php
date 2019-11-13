@@ -71,6 +71,7 @@ Class AwesomeTracker {
         AwesomeTrackerRequires::load();
 
         register_activation_hook(__FILE__, 'AwesomeTracker::activate');
+        register_uninstall_hook(__FILE__, 'AwesomeTracker::uninstall');
 
         AwesomeTrackerHooks::add_actions();
         AwesomeTrackerHooks::add_filters();
@@ -81,6 +82,12 @@ Class AwesomeTracker {
         AwesomeTrackerActivator::create_tables();
 
         update_option('awesome_tracker_version', AWESOME_TRACKER_VERSION);
+
+    }
+
+    public static function uninstall() {
+
+        AwesomeTrackerActivator::uninstall();
 
     }
 
