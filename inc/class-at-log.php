@@ -111,7 +111,7 @@ Class AwesomeTrackerLog{
         $currentRoute = $request->get_route();
         $currentMethod = strtolower($request->get_method());
 
-        $allRoutes = AT_Route::get_current_routes(true);
+        $allRoutes = AwesomeTracker_Route::get_current_routes(true);
 
         foreach ($allRoutes as $route => $methods ){
             if(!preg_match('@^' . $route . '$@i', $currentRoute))
@@ -158,7 +158,7 @@ Class AwesomeTrackerLog{
             $args['user_id'] = get_current_user_id()? get_current_user_id() : null;
         }
 
-        $record = new AT_Record($args);
+        $record = new AwesomeTracker_Record($args);
 
         if($record->save())
             return true;

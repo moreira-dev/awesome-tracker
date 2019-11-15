@@ -242,7 +242,7 @@ class AwesomeTrackerLogTable extends WP_AwesomeTracker_Table {
 
         if (is_array($records) && !empty($records))
             foreach ($records as $record) {
-                $record = new AT_Record($record);
+                $record = new AwesomeTracker_Record($record);
 
                 $this->items[] = array(
                     'ID' => $record->ID,

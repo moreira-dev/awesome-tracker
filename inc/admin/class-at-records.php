@@ -224,7 +224,7 @@ if (!class_exists('AwesomeTrackerPageRecords')):
             if (!is_numeric($id))
                 return;
 
-            $record = new AT_Record($id);
+            $record = new AwesomeTracker_Record($id);
 
             $user = false;
             if (is_numeric($record->user_id) && !empty($record->user_id)) {
@@ -235,7 +235,7 @@ if (!class_exists('AwesomeTrackerPageRecords')):
 
             $ipToShow = $record->ip;
 
-            if (ATHelper::is_valid_ip($ipToShow)) {
+            if (AwesomeTrackerHelper::is_valid_ip($ipToShow)) {
                 $ipToShow = "<a href=\"https://ipalyzer.com/{$ipToShow}\" target=\"_blank\">{$ipToShow}</a>";
             }
 

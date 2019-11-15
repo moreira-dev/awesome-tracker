@@ -57,7 +57,7 @@ if (!class_exists('AwesomeTrackerExport')):
 
                 if ($records)
                     foreach ($records as $record) {
-                        $labelAndDescription = AT_Record::get_label_and_description($record);
+                        $labelAndDescription = AwesomeTracker_Record::get_label_and_description($record);
 
                         $output .= $labelAndDescription['label'] . ";";
                         $output .= "\"" . $labelAndDescription['description'] . "\"" . ";";
