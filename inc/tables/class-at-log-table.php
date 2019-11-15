@@ -54,6 +54,23 @@ class AwesomeTrackerLogTable extends WP_AwesomeTracker_Table {
      */
     public $perpage = 0;
 
+    /**
+     * Filter to use to get the SQL column value
+     *
+     * @var array
+     */
+    public $columnToQuery = array(
+        'type' => false,
+        'details' => false,
+        'username' => 'u.display_name',
+        'ip' => 'v.ip',
+        'date' => 'v.visited'
+    );
+
+    public $defaultOrderBy = 'date';
+
+    public $defaultOrderWay = 'DESC';
+
     function __construct($array = array()) {
 
         if (empty($array))
@@ -85,11 +102,21 @@ class AwesomeTrackerLogTable extends WP_AwesomeTracker_Table {
     function column_type($item) {
 
         $actions = array(
-            'view' => sprintf('<a href="?page=%s&action=%s&record=%d">' . __('View', AwesomeTracker::TEXT_DOMAIN) . '</a>', $_REQUEST['page'], 'view', $item['ID'])
+            'view' => sprintf(
+                    '<a href="?page=%s&action=%s&record=%d">' . __('View', AwesomeTracker::TEXT_DOMAIN) . '</a>',
+                    esc_attr($_REQUEST['page']),
+                    'view',
+                    $item['ID']
+            )
         );
 
         return sprintf('%1$s %2$s',
-                       sprintf('<a href="?page=%s&action=%s&record=%d">' . $item['type'] . '</a>', $_REQUEST['page'], 'view', $item['ID']),
+                       sprintf(
+                               '<a href="?page=%s&action=%s&record=%d">' . $item['type'] . '</a>',
+                               esc_attr($_REQUEST['page']),
+                               'view',
+                               $item['ID']
+                       ),
                        $this->row_actions($actions)
         );
 
@@ -120,9 +147,9 @@ class AwesomeTrackerLogTable extends WP_AwesomeTracker_Table {
     function get_sortable_columns() {
 
         $sortable_columns = array(
-            'username' => array('u.display_name', false),
-            'ip' => array('v.ip', false),
-            'date' => array('v.visited', false)
+            'username' => array('username', false),
+            'ip' => array('ip', false),
+            'date' => array('date', false)
         );
 
         return $sortable_columns;
@@ -133,6 +160,30 @@ class AwesomeTrackerLogTable extends WP_AwesomeTracker_Table {
         $actions = array();
 
         return $actions;
+    }
+
+    function get_orderby($orderby = ''){
+
+        if($orderby)
+            foreach ($this->columnToQuery as $columnKey => $columnSQL)
+                if($orderby == $columnKey && $columnSQL)
+                    return $columnSQL;
+
+
+        return $this->columnToQuery[$this->defaultOrderBy];
+    }
+
+    function get_orderway($orderway = ''){
+
+        if(!$orderway)
+            return $this->defaultOrderWay;
+
+        $orderway = strtoupper($orderway);
+
+        if(in_array($orderway,array('ASC','DESC')))
+            return $orderway;
+
+        return $this->defaultOrderWay;
     }
 
     function prepare_sql_filters() {
@@ -147,14 +198,13 @@ class AwesomeTrackerLogTable extends WP_AwesomeTracker_Table {
         if (empty ($per_page) || $per_page < 1)
             $per_page = $screen->get_option('per_page', 'default');
 
-        $orderby = (!empty($_REQUEST['orderby'])) ? $_REQUEST['orderby'] : 'date';
-        $order = (!empty($_REQUEST['order'])) ? $_REQUEST['order'] : 'desc';
+        $orderby = $this->get_orderby($_REQUEST['orderby']);
+
+        $order = $this->get_orderway($_REQUEST['order']);
 
         $search = (!empty($_REQUEST['s'])) ? $_REQUEST['s'] : '';
         $filter_search = "";
 
-        if ($orderby == 'date')
-            $orderby = 'v.visited';
 
         if (!empty($search)) {
             $filter_search = $wpdb->prepare(' AND (u.display_name LIKE "%1$s" 

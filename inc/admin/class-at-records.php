@@ -72,7 +72,7 @@ if (!class_exists('AwesomeTrackerPageRecords')):
             <form name="records_form" id="records_form" method="get">
                 <input type="hidden" name="page" value="awesome-tracker">
                 <?php if (isset($_REQUEST['filtering'])) { ?>
-                    <input type="hidden" name="filtering" value="<?php echo $_REQUEST['filtering']; ?>">
+                    <input type="hidden" name="filtering" value="<?php echo esc_attr($_REQUEST['filtering']); ?>">
                 <?php } ?>
                 <div class="wrap">
                     <h2><?php _e('Records', AwesomeTracker::TEXT_DOMAIN); ?></h2>
