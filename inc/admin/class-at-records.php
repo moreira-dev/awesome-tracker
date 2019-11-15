@@ -254,8 +254,8 @@ if (!class_exists('AwesomeTrackerPageRecords')):
                     <input type="hidden" name="action" value="view">
 
                     <div id="visit-data" class="form-table">
-                        <div class="col">
-                            <?php if ($user) { ?>
+                        <?php if ($user) { ?>
+                            <div class="col">
                                 <div class="at-info">
                                     <h2><?php _e('User information', AwesomeTracker::TEXT_DOMAIN); ?></h2>
                                     <div class="at-body">
@@ -267,8 +267,8 @@ if (!class_exists('AwesomeTrackerPageRecords')):
                                         ?>
                                     </div>
                                 </div>
-                            <?php } ?>
-                        </div>
+                            </div>
+                        <?php } ?>
                         <div class="col">
                             <div class="at-info">
                                 <h2><?php _e('Visit information', AwesomeTracker::TEXT_DOMAIN); ?></h2>
