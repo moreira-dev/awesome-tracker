@@ -7,7 +7,7 @@ class AwesomeTracker_Route {
      */
     const DELIMITER = '_-_';
 
-    const KEY_OPTION = 'at_routes';
+    const KEY_OPTION = 'awesometracker_routes';
 
     /**
      * @var string
