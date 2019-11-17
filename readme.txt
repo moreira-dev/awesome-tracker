@@ -1,12 +1,13 @@
 === Awesome Tracker ===
 Contributors: moreiradev
+Donate link: https://paypal.me/devmoreira/
 Tags: analytics, tracking
 Requires at least: 5.0
 Tested up to: 5.3
 Stable tag: 1.0
 Requires PHP: 5.6
-License: GPLv2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
+License: GPLv3 or later
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 Track your users' navigation server-side. Also, you can track your WordPress API calls.
 
@@ -55,3 +56,8 @@ Yay, you are cool as well! If you miss some added functionality, you can suggest
 
 = 1.0 =
 * Track users' visits and API calls
+
+== Screenshots ==
+
+1. Records listing
+2. API Routes configuration

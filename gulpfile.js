@@ -16,7 +16,8 @@ var paths = {
     },
     php : "./*.php",
     license: "./LICENSE",
-    dest: "./svn/",
+    readme: "./readme.txt",
+    dest: "./svn/trunk",
 
     styles: {
         // By using styles/**/*.sass we're telling gulp to check all folders for any sass file
@@ -38,6 +39,7 @@ function build() {
         .pipe(gulp.src(paths.js.js,base))
         .pipe(gulp.src(paths.php,base))
         .pipe(gulp.src(paths.license,base))
+        .pipe(gulp.src(paths.readme,base))
         .pipe(gulp.dest(paths.dest));
 }
 
