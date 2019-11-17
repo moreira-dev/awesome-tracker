@@ -50,7 +50,7 @@ if (!class_exists('AwesomeTrackerPageRoutes')):
                 'atRoutesGlobal', // Array containing dynamic data for a JS Global.
                 [
                     'apiRoutes' => AwesomeTrackerApi::get_api_routelist(),
-                    'currentRoutes' => AT_Route::get_current_routes(),
+                    'currentRoutes' => AwesomeTracker_Route::get_current_routes(),
                 ]
             );
         }

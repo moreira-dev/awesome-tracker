@@ -3,7 +3,7 @@
 /**
  * Class to implement a tracked record from DB
  */
-class AT_Record {
+class AwesomeTracker_Record {
 
     /**
      * Record ID.
@@ -275,12 +275,12 @@ class AT_Record {
         }
 
         if (empty($this->ip)) {
-            $this->ip = ATHelper::get_client_ip();
+            $this->ip = AwesomeTrackerHelper::get_client_ip();
         }
 
         $data = array(
-            'user_id' => ATHelper::get_null_if_empty($this->user_id),
-            'ip' => ATHelper::limit_string_to($this->ip, 45),
+            'user_id' => AwesomeTrackerHelper::get_null_if_empty($this->user_id),
+            'ip' => AwesomeTrackerHelper::limit_string_to($this->ip, 45),
             'visited' => $this->visited,
             'page' => $this->page,
             'is_home' => $this->is_home
@@ -288,25 +288,25 @@ class AT_Record {
 
         $format = array('%d', '%s', '%s', '%d', '%d');
 
-        $data['term_id'] = ATHelper::get_null_if_empty($this->term_id);
+        $data['term_id'] = AwesomeTrackerHelper::get_null_if_empty($this->term_id);
         $format[] = '%d';
-        $data['taxonomy'] = ATHelper::get_null_if_empty(ATHelper::limit_string_to($this->taxonomy, 32));
+        $data['taxonomy'] = AwesomeTrackerHelper::get_null_if_empty(AwesomeTrackerHelper::limit_string_to($this->taxonomy, 32));
         $format[] = '%s';
-        $data['post_id'] = ATHelper::get_null_if_empty($this->post_id);
+        $data['post_id'] = AwesomeTrackerHelper::get_null_if_empty($this->post_id);
         $format[] = '%d';
-        $data['archive_ptype'] = ATHelper::get_null_if_empty(ATHelper::limit_string_to($this->archive_ptype, 45));
+        $data['archive_ptype'] = AwesomeTrackerHelper::get_null_if_empty(AwesomeTrackerHelper::limit_string_to($this->archive_ptype, 45));
         $format[] = '%s';
-        $data['query_404'] = ATHelper::get_null_if_empty(ATHelper::limit_string_to($this->query_404, 150));
+        $data['query_404'] = AwesomeTrackerHelper::get_null_if_empty(AwesomeTrackerHelper::limit_string_to($this->query_404, 150));
         $format[] = '%s';
-        $data['search_query'] = ATHelper::get_null_if_empty(ATHelper::limit_string_to($this->search_query, 100));
+        $data['search_query'] = AwesomeTrackerHelper::get_null_if_empty(AwesomeTrackerHelper::limit_string_to($this->search_query, 100));
         $format[] = '%s';
-        $data['author_archive'] = ATHelper::get_null_if_empty($this->author_archive);
+        $data['author_archive'] = AwesomeTrackerHelper::get_null_if_empty($this->author_archive);
         $format[] = '%d';
-        $data['date_archive'] = ATHelper::get_null_if_empty(ATHelper::limit_string_to($this->date_archive, 45));
+        $data['date_archive'] = AwesomeTrackerHelper::get_null_if_empty(AwesomeTrackerHelper::limit_string_to($this->date_archive, 45));
         $format[] = '%s';
-        $data['api_route'] = ATHelper::get_null_if_empty(ATHelper::limit_string_to($this->api_route, 150));
+        $data['api_route'] = AwesomeTrackerHelper::get_null_if_empty(AwesomeTrackerHelper::limit_string_to($this->api_route, 150));
         $format[] = '%s';
-        $data['api_method'] = ATHelper::get_null_if_empty(ATHelper::limit_string_to($this->api_method, 50));
+        $data['api_method'] = AwesomeTrackerHelper::get_null_if_empty(AwesomeTrackerHelper::limit_string_to($this->api_method, 50));
         $format[] = '%s';
 
         if ($update) {

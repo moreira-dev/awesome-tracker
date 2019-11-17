@@ -72,7 +72,7 @@ if (!class_exists('AwesomeTrackerPageRecords')):
             <form name="records_form" id="records_form" method="get">
                 <input type="hidden" name="page" value="awesome-tracker">
                 <?php if (isset($_REQUEST['filtering'])) { ?>
-                    <input type="hidden" name="filtering" value="<?php echo $_REQUEST['filtering']; ?>">
+                    <input type="hidden" name="filtering" value="<?php echo esc_attr($_REQUEST['filtering']); ?>">
                 <?php } ?>
                 <div class="wrap">
                     <h2><?php _e('Records', AwesomeTracker::TEXT_DOMAIN); ?></h2>
@@ -224,7 +224,7 @@ if (!class_exists('AwesomeTrackerPageRecords')):
             if (!is_numeric($id))
                 return;
 
-            $record = new AT_Record($id);
+            $record = new AwesomeTracker_Record($id);
 
             $user = false;
             if (is_numeric($record->user_id) && !empty($record->user_id)) {
@@ -235,7 +235,7 @@ if (!class_exists('AwesomeTrackerPageRecords')):
 
             $ipToShow = $record->ip;
 
-            if (ATHelper::is_valid_ip($ipToShow)) {
+            if (AwesomeTrackerHelper::is_valid_ip($ipToShow)) {
                 $ipToShow = "<a href=\"https://ipalyzer.com/{$ipToShow}\" target=\"_blank\">{$ipToShow}</a>";
             }
 
@@ -254,8 +254,8 @@ if (!class_exists('AwesomeTrackerPageRecords')):
                     <input type="hidden" name="action" value="view">
 
                     <div id="visit-data" class="form-table">
-                        <div class="col">
-                            <?php if ($user) { ?>
+                        <?php if ($user) { ?>
+                            <div class="col">
                                 <div class="at-info">
                                     <h2><?php _e('User information', AwesomeTracker::TEXT_DOMAIN); ?></h2>
                                     <div class="at-body">
@@ -267,8 +267,8 @@ if (!class_exists('AwesomeTrackerPageRecords')):
                                         ?>
                                     </div>
                                 </div>
-                            <?php } ?>
-                        </div>
+                            </div>
+                        <?php } ?>
                         <div class="col">
                             <div class="at-info">
                                 <h2><?php _e('Visit information', AwesomeTracker::TEXT_DOMAIN); ?></h2>

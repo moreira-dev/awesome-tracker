@@ -66,7 +66,7 @@ Class AwesomeTrackerApi {
 
         $routeToSave = $request->get_param('route');
 
-        $routeObj = AT_Route::get_instance($routeToSave['apiRoute'], $routeToSave['method']);
+        $routeObj = AwesomeTracker_Route::get_instance($routeToSave['apiRoute'], $routeToSave['method']);
 
         $apiArg = $routeToSave['apiArg'];
 
@@ -122,7 +122,7 @@ Class AwesomeTrackerApi {
 
         $routeToSave = $request->get_param('route');
 
-        $routeOnDB = AT_Route::get_instance($routeToSave['ID']);
+        $routeOnDB = AwesomeTracker_Route::get_instance($routeToSave['ID']);
 
         if (!$routeOnDB->delete())
             return new WP_Error('cant_delete',

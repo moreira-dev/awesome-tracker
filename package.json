@@ -1,7 +1,10 @@
 {
-  "name": "css",
+  "name": "awesome-tracker",
   "version": "1.0.0",
-  "description": "Compiling scss files",
+  "description": "Production building",
+  "scripts": {
+    "build": "gulp build && cd js && npm run build"
+  },
   "devDependencies": {
     "autoprefixer": "^9.7.1",
     "browser-sync": "^2.26.7",
@@ -9,6 +12,7 @@
     "gulp": "^4.0.2",
     "gulp-postcss": "^8.0.0",
     "gulp-sass": "^4.0.2",
-    "gulp-sourcemaps": "^2.6.5"
+    "gulp-sourcemaps": "^2.6.5",
+    "npm-scripts": "^1.4.0"
   }
 }

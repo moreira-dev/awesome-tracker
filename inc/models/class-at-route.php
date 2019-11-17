@@ -1,13 +1,13 @@
 <?php
 
-class AT_Route {
+class AwesomeTracker_Route {
 
     /**
      * Delimiter for ID construction
      */
     const DELIMITER = '_-_';
 
-    const KEY_OPTION = 'at_routes';
+    const KEY_OPTION = 'awesometracker_routes';
 
     /**
      * @var string
@@ -24,7 +24,7 @@ class AT_Route {
     /**
      * Return the list of configured routes from DB
      *
-     * @param bool $raw If raw, instead of an array of AT_Route objects,
+     * @param bool $raw If raw, instead of an array of AwesomeTracker_Route objects,
      *                  the array from the DB will be returned
      *
      * @return array|bool|mixed
@@ -44,7 +44,7 @@ class AT_Route {
 
         foreach ($dbRoutes as $apiRoute => $methods)
             foreach ($methods as $method => $apiArg) {
-                $objRoute = new AT_Route($apiRoute, $method, $apiArg);
+                $objRoute = new AwesomeTracker_Route($apiRoute, $method, $apiArg);
                 $routes[$objRoute->ID] = $objRoute;
             }
 
@@ -60,7 +60,7 @@ class AT_Route {
      * @param string $apiRouteOrID
      * @param string $method
      *
-     * @return AT_Route
+     * @return AwesomeTracker_Route
      */
     public static function get_instance($apiRouteOrID, $method = '') {
 
@@ -79,7 +79,7 @@ class AT_Route {
         if (isset($routes[$ID]))
             return $routes[$ID];
 
-        return new AT_Route($apiRouteOrID, $method);
+        return new AwesomeTracker_Route($apiRouteOrID, $method);
     }
 
 

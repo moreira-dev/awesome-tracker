@@ -40,6 +40,7 @@ class AwesomeTrackerActivator {
     public static function uninstall() {
 
         delete_option('awesome_tracker_version');
+        delete_option(AwesomeTracker_Route::KEY_OPTION);
 
 
         global $wpdb;

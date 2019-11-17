@@ -1,6 +1,6 @@
 <?php
 
-class ATHelper {
+class AwesomeTrackerHelper {
 
     /**
      * Limits the max size of a string to a certain number of chars
