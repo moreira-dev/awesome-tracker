@@ -396,7 +396,10 @@ class AwesomeTrackerLogTable extends WP_AwesomeTracker_Table {
 
         $tableTrack = $wpdb->prefix . AwesomeTracker::TBL_VISITS;
 
-        $sql = "SELECT u.ID, u.display_name FROM {$wpdb->users} u WHERE u.ID IN (SELECT DISTINCT(user_id) FROM {$tableTrack}) ORDER BY display_name";
+        $sql = "SELECT u.ID, u.display_name, u.user_login 
+                        FROM {$wpdb->users} u 
+                        WHERE u.ID IN (SELECT DISTINCT(user_id) FROM {$tableTrack}) 
+                        ORDER BY display_name";
         $users = $wpdb->get_results($sql, ARRAY_A);
 
         ?>
@@ -418,7 +421,7 @@ class AwesomeTrackerLogTable extends WP_AwesomeTracker_Table {
                             '<option value="%s"%s>%s</option>',
                             $value['ID'],
                             $value['ID'] == $current_v ? ' selected="selected"' : '',
-                            $value['display_name']
+                            $value['display_name'] . ' (' . $value['user_login'] . ')'
                         );
                     }
                     ?>
