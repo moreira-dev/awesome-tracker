@@ -100,10 +100,7 @@ Class AwesomeTracker {
         if ( get_option( 'awesome_tracker_version' ) == AWESOME_TRACKER_VERSION)
             return null;
 
-        update_option('awesome_tracker_version', AWESOME_TRACKER_VERSION);
-
-        AwesomeTrackerActivator::unregister_cron();
-        AwesomeTrackerActivator::register_cron();
+        self::activate();
     }
 
 }

@@ -11,7 +11,8 @@ class AwesomeTrackerHooks{
 
         add_action( 'rest_api_init', 'AwesomeTrackerApi::register_routes');
 
-        add_action( AwesomeTrackerCron::HOOK, 'AwesomeTrackerCron::remove_old_records' );
+        add_action( AwesomeTrackerCron::HOOK_DAILY, 'AwesomeTrackerCron::remove_old_records' );
+        add_action( AwesomeTrackerCron::HOOK_HOURLY, 'AwesomeTrackerCron::update_ip_data' );
     }
 
     public static function add_filters(){
