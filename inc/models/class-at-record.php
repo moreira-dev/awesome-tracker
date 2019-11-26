@@ -111,6 +111,20 @@ class AwesomeTracker_Record {
     public $ip = '';
 
     /**
+     * Country code for the IP
+     *
+     * @var string
+     */
+    public $country_code = '';
+
+    /**
+     * Country name for the IP
+     *
+     * @var string
+     */
+    public $country_name = '';
+
+    /**
      * @var string
      */
     public $term_name = '';

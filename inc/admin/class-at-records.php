@@ -140,6 +140,11 @@ if (!class_exists('AwesomeTrackerPageRecords')):
                     'label' => __('IP', AwesomeTracker::TEXT_DOMAIN),
                     'type' => 'input',
                     'value' => $record->ip
+                ),
+                'country' => array(
+                    'label' => __('Country', AwesomeTracker::TEXT_DOMAIN),
+                    'type' => 'input',
+                    'value' => $record->country_name
                 )
             );
 

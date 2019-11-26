@@ -64,6 +64,7 @@ class AwesomeTrackerLogTable extends WP_AwesomeTracker_Table {
         'details' => false,
         'username' => 'u.display_name',
         'ip' => 'v.ip',
+        'country' => 'v.country_code',
         'date' => 'v.visited'
     );
 
@@ -92,6 +93,7 @@ class AwesomeTrackerLogTable extends WP_AwesomeTracker_Table {
             case 'username':
             case 'details':
             case 'ip':
+            case 'country':
             case 'date':
                 return $item[$column_name];
             default:
@@ -134,11 +136,12 @@ class AwesomeTrackerLogTable extends WP_AwesomeTracker_Table {
     function get_columns() {
 
         $columns = array(
-            'type' => 'Type',
-            'details' => 'Details',
-            'username' => 'User',
-            'ip' => 'IP',
-            'date' => 'Date'
+            'type' => __('Type',AwesomeTracker::TEXT_DOMAIN),
+            'details' => __('Details',AwesomeTracker::TEXT_DOMAIN),
+            'username' => __('User',AwesomeTracker::TEXT_DOMAIN),
+            'ip' => __('IP',AwesomeTracker::TEXT_DOMAIN),
+            'country' => __('Country',AwesomeTracker::TEXT_DOMAIN),
+            'date' => __('Date',AwesomeTracker::TEXT_DOMAIN)
         );
 
         return $columns;
@@ -149,6 +152,7 @@ class AwesomeTrackerLogTable extends WP_AwesomeTracker_Table {
         $sortable_columns = array(
             'username' => array('username', false),
             'ip' => array('ip', false),
+            'country' => array('country', false),
             'date' => array('date', false)
         );
 
@@ -216,6 +220,7 @@ class AwesomeTrackerLogTable extends WP_AwesomeTracker_Table {
                 OR v.query_404 LIKE "%1$s" 
                 OR v.search_query LIKE "%1$s" 
                 OR v.ip LIKE "%1$s" 
+                OR v.country_name LIKE "%1$s" 
                 OR v.visited LIKE "%1$s" 
                 ) ', '%' . $wpdb->esc_like($search) . '%');
         }
@@ -303,7 +308,8 @@ class AwesomeTrackerLogTable extends WP_AwesomeTracker_Table {
                     'user_id' => $record->user_id,
                     'post_id' => $record->post_id,
                     'date' => $record->visited_formatted,
-                    'ip' => $record->ip
+                    'ip' => $record->ip,
+                    'country' => $record->country_name
                 );
             }
 
