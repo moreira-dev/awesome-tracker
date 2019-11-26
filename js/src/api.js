@@ -32,3 +32,9 @@ export const apiDeleteRoute = route => {
 		.then( customThen )
 		.catch( customCatch );
 };
+
+export const apiSaveRecordDB = days => {
+	return apiFetch( { path: nameSpace + '/options', method: 'POST', data: { recordsDB: days } } )
+		.then( customThen )
+		.catch( customCatch );
+};

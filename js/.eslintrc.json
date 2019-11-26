@@ -27,6 +27,7 @@
 		"document": true,
 		"atGlobal": "readonly",
 		"atRoutesGlobal": "readonly",
+		"atSettingsGlobal": "readonly",
 		"ati18n": "readonly",
 		"jQuery": "readonly"
 	},

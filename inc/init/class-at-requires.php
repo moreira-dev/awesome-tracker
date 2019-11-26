@@ -3,6 +3,8 @@
 class AwesomeTrackerRequires{
     public static function load(){
         require_once AwesomeTracker::$plugin_dir . 'inc/class-at-helper.php';
+        require_once AwesomeTracker::$plugin_dir . 'inc/class-at-options.php';
+        require_once AwesomeTracker::$plugin_dir . 'inc/class-at-cron.php';
         require_once AwesomeTracker::$plugin_dir . 'inc/models/class-at-record.php';
         require_once AwesomeTracker::$plugin_dir . 'inc/models/class-at-route.php';
         require_once AwesomeTracker::$plugin_dir . 'inc/init/class-at-activator.php';
@@ -22,5 +24,6 @@ class AwesomeTrackerRequires{
         require_once AwesomeTracker::$plugin_dir . 'inc/admin/class-at-main.php';
         require_once AwesomeTracker::$plugin_dir . 'inc/admin/class-at-routes.php';
         require_once AwesomeTracker::$plugin_dir . 'inc/admin/class-at-records.php';
+        require_once AwesomeTracker::$plugin_dir . 'inc/admin/class-at-settings.php';
     }
 }

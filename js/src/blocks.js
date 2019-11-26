@@ -10,3 +10,4 @@
  */
 
 import './admin/routes';
+import './admin/settings';

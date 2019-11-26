@@ -449,6 +449,28 @@ class AwesomeTracker_Record {
         return empty($stringTime) || $stringTime == '0000-00-00 00:00:00';
     }
 
+    public static function delete_old_recordsDB($daysOld){
+
+        $daysOld = intval($daysOld);
+        if($daysOld <= 0)
+            return true;
+
+        global $wpdb;
+
+        $tableTrack = $wpdb->prefix . AwesomeTracker::TBL_VISITS;
+
+        $datetime = new DateTime( 'now', wp_timezone() );
+        $datetime->modify("-{$daysOld} day");
+        $dateToDelete = $datetime->format('Y-m-d H:i:s');
+
+        return $wpdb->query(
+            $wpdb->prepare(
+                "DELETE FROM {$tableTrack} WHERE visited < %s",
+                $dateToDelete
+            )
+        );
+    }
+
     /**
      * Convert object to array.
      *

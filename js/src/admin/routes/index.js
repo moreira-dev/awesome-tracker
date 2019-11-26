@@ -206,7 +206,11 @@ class Routes extends Component {
 
 }
 
-wpRender(
-	<Routes />,
-	document.getElementById( 'at-routes' )
-);
+const elementToRender = document.getElementById( 'at-routes' );
+if ( elementToRender ) {
+	wpRender(
+		<Routes />,
+		elementToRender
+	);
+}
+

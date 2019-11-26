@@ -53,14 +53,24 @@ if( !class_exists ('AwesomeTrackerPageMain') ):
                 null // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.editor.build.css' ) // Version: File modification time.
             );
 
-            // WP Localized globals. Use dynamic PHP stuff in JavaScript via `cgbGlobal` object.
             wp_localize_script(
                 'awesome_tracker-block-js',
                 'atGlobal', // Array containing dynamic data for a JS Global.
-                [
+                array(
                     'textDomain' => AwesomeTracker::TEXT_DOMAIN,
                     'nameSpace' => AwesomeTrackerApi::NAME_SPACE
-                ]
+                )
+            );
+            wp_localize_script(
+                'awesome_tracker-block-js',
+                'atRoutesGlobal',
+                array()
+            );
+
+            wp_localize_script(
+                'awesome_tracker-block-js',
+                'atSettingsGlobal',
+                array()
             );
         }
 

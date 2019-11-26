@@ -75,6 +75,9 @@ Class AwesomeTracker {
 
         AwesomeTrackerHooks::add_actions();
         AwesomeTrackerHooks::add_filters();
+
+        add_action( 'plugins_loaded', 'AwesomeTracker::update');
+
     }
 
     public static function activate() {
@@ -83,12 +86,24 @@ Class AwesomeTracker {
 
         update_option('awesome_tracker_version', AWESOME_TRACKER_VERSION);
 
+        AwesomeTrackerActivator::register_cron();
+
     }
 
     public static function uninstall() {
 
         AwesomeTrackerActivator::uninstall();
 
+    }
+
+    public static function update(){
+        if ( get_option( 'awesome_tracker_version' ) == AWESOME_TRACKER_VERSION)
+            return null;
+
+        update_option('awesome_tracker_version', AWESOME_TRACKER_VERSION);
+
+        AwesomeTrackerActivator::unregister_cron();
+        AwesomeTrackerActivator::register_cron();
     }
 
 }

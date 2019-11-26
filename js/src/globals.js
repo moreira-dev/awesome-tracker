@@ -28,3 +28,9 @@ export const currentRoutes = atRoutesGlobal.currentRoutes;
  * @type {string}
  */
 export const DELIMITER = atRoutesGlobal.DELIMITER;
+
+/**
+ * Contains the settingss values from the DB
+ * @type {object}
+ */
+export const currentSettings = atSettingsGlobal.fields;

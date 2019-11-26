@@ -49,6 +49,20 @@ class AwesomeTrackerActivator {
 
         $wpdb->query("DROP TABLE IF EXISTS {$table_visits}");
 
+        self::unregister_cron();
+
+    }
+
+    public static function register_cron(){
+        if (! wp_next_scheduled ( AwesomeTrackerCron::HOOK )) {
+            wp_schedule_event( time(), 'daily', AwesomeTrackerCron::HOOK );
+        }
+    }
+
+    public static function unregister_cron(){
+        $timestamp = wp_next_scheduled( AwesomeTrackerCron::HOOK );
+        wp_unschedule_event( $timestamp, AwesomeTrackerCron::HOOK );
+        wp_clear_scheduled_hook( AwesomeTrackerCron::HOOK );
     }
 
 }
