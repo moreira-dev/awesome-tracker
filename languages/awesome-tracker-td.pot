@@ -1,0 +1,277 @@
+# Copyright (C) 2019 HintCoding
+# This file is distributed under the same license as the Awesome Tracker plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Awesome Tracker 1.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/awesome-tracker\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2019-11-26T11:45:22+01:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.5.0-alpha\n"
+"X-Domain: awesome-tracker-td\n"
+
+#. Plugin Name of the plugin
+#: inc/admin/class-at-main.php:16
+msgid "Awesome Tracker"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "http://www.hintcoding.com"
+msgstr ""
+
+#. Description of the plugin
+msgid "Keep track of users behaviours"
+msgstr ""
+
+#. Author of the plugin
+msgid "HintCoding"
+msgstr ""
+
+#: inc/admin/class-at-main.php:27
+#: inc/admin/class-at-records.php:25
+msgid "Records per page"
+msgstr ""
+
+#: inc/admin/class-at-records.php:17
+msgid "Tracked Records"
+msgstr ""
+
+#: inc/admin/class-at-records.php:47
+msgid "All the users"
+msgstr ""
+
+#: inc/admin/class-at-records.php:48
+msgid "There are no users"
+msgstr ""
+
+#: inc/admin/class-at-records.php:78
+msgid "Records"
+msgstr ""
+
+#: inc/admin/class-at-records.php:87
+msgid "Search"
+msgstr ""
+
+#: inc/admin/class-at-records.php:130
+msgid "Type of page"
+msgstr ""
+
+#: inc/admin/class-at-records.php:135
+#: inc/tables/class-at-log-table.php:140
+msgid "Details"
+msgstr ""
+
+#: inc/admin/class-at-records.php:140
+#: inc/tables/class-at-log-table.php:142
+msgid "IP"
+msgstr ""
+
+#: inc/admin/class-at-records.php:145
+#: inc/tables/class-at-log-table.php:143
+msgid "Country"
+msgstr ""
+
+#: inc/admin/class-at-records.php:154
+msgid "View complete Post"
+msgstr ""
+
+#: inc/admin/class-at-records.php:157
+msgid "Go to Post / Page"
+msgstr ""
+
+#: inc/admin/class-at-records.php:164
+msgid "Taxonomy"
+msgstr ""
+
+#: inc/admin/class-at-records.php:171
+msgid "Time of the visit"
+msgstr ""
+
+#: inc/admin/class-at-records.php:193
+msgid "View complete profile"
+msgstr ""
+
+#: inc/admin/class-at-records.php:196
+msgid "Go to user profile"
+msgstr ""
+
+#: inc/admin/class-at-records.php:199
+msgid "Full Name"
+msgstr ""
+
+#: inc/admin/class-at-records.php:204
+msgid "Login"
+msgstr ""
+
+#: inc/admin/class-at-records.php:209
+msgid "Email"
+msgstr ""
+
+#: inc/admin/class-at-records.php:214
+msgid "Date Registered"
+msgstr ""
+
+#: inc/admin/class-at-records.php:251
+msgid "Visit from %s at %s"
+msgstr ""
+
+#: inc/admin/class-at-records.php:265
+msgid "User information"
+msgstr ""
+
+#: inc/admin/class-at-records.php:279
+msgid "Visit information"
+msgstr ""
+
+#: inc/admin/class-at-routes.php:18
+msgid "Awesome Tracker API Routes"
+msgstr ""
+
+#: inc/admin/class-at-routes.php:18
+msgid "API Routes"
+msgstr ""
+
+#: inc/admin/class-at-settings.php:19
+msgid "Awesome Tracker Settings"
+msgstr ""
+
+#: inc/admin/class-at-settings.php:21
+msgid "Settings"
+msgstr ""
+
+#: inc/class-at-api.php:88
+#: inc/class-at-api.php:154
+msgid "There was an error trying to save the data"
+msgstr ""
+
+#: inc/class-at-api.php:122
+msgid "There was an error trying to delete the data"
+msgstr ""
+
+#: inc/models/class-at-record.php:361
+msgid "API Route View"
+msgstr ""
+
+#: inc/models/class-at-record.php:362
+msgid "Queried Route: %s "
+msgstr ""
+
+#: inc/models/class-at-record.php:365
+msgid "404 Page View"
+msgstr ""
+
+#: inc/models/class-at-record.php:366
+msgid "Failed query: %s"
+msgstr ""
+
+#: inc/models/class-at-record.php:369
+msgid "Search Page View"
+msgstr ""
+
+#: inc/models/class-at-record.php:370
+msgid "Search parameters: %s"
+msgstr ""
+
+#: inc/models/class-at-record.php:373
+#: inc/models/class-at-record.php:377
+#: inc/models/class-at-record.php:381
+#: inc/models/class-at-record.php:385
+msgid "Archive Page View"
+msgstr ""
+
+#: inc/models/class-at-record.php:374
+msgid "Archive for Post Type: %s"
+msgstr ""
+
+#: inc/models/class-at-record.php:378
+msgid "Archive for Term: %s"
+msgstr ""
+
+#: inc/models/class-at-record.php:382
+msgid "Archive for Author: %s"
+msgstr ""
+
+#: inc/models/class-at-record.php:386
+msgid "Archive for Date: %s"
+msgstr ""
+
+#: inc/models/class-at-record.php:389
+msgid "Home Page View"
+msgstr ""
+
+#: inc/models/class-at-record.php:390
+msgid "Posts index"
+msgstr ""
+
+#: inc/models/class-at-record.php:393
+msgid "Post / Page View"
+msgstr ""
+
+#: inc/models/class-at-record.php:394
+msgid "Post / Page title: %s"
+msgstr ""
+
+#: inc/tables/class-at-log-table.php:108
+msgid "View"
+msgstr ""
+
+#: inc/tables/class-at-log-table.php:139
+msgid "Type"
+msgstr ""
+
+#: inc/tables/class-at-log-table.php:141
+msgid "User"
+msgstr ""
+
+#: inc/tables/class-at-log-table.php:144
+msgid "Date"
+msgstr ""
+
+#: inc/tables/class-at-log-table.php:335
+msgid "All records"
+msgstr ""
+
+#: inc/tables/class-at-log-table.php:336
+msgid "Home records"
+msgstr ""
+
+#: inc/tables/class-at-log-table.php:337
+msgid "404 records"
+msgstr ""
+
+#: inc/tables/class-at-log-table.php:338
+msgid "Search page records"
+msgstr ""
+
+#: inc/tables/class-at-log-table.php:339
+msgid "Archive records"
+msgstr ""
+
+#: inc/tables/class-at-log-table.php:340
+msgid "Post / Page records"
+msgstr ""
+
+#: inc/tables/class-at-log-table.php:341
+msgid "API records"
+msgstr ""
+
+#: inc/tables/class-at-log-table.php:415
+msgid "Export current results"
+msgstr ""
+
+#: inc/tables/class-at-log-table.php:420
+msgid "Filter by user"
+msgstr ""
+
+#: js/src/components/RouteLine/SelectApi.js:51
+msgid "Select an option"
+msgstr ""
+
+#: js/src/components/RouteLine/selectApiRoute.js:11
+msgid "Choose a REST API Route"
+msgstr ""

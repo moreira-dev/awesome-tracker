@@ -105,7 +105,7 @@ class AwesomeTrackerLogTable extends WP_AwesomeTracker_Table {
 
         $actions = array(
             'view' => sprintf(
-                    '<a href="?page=%s&action=%s&record=%d">' . __('View', AwesomeTracker::TEXT_DOMAIN) . '</a>',
+                    '<a href="?page=%s&action=%s&record=%d">' . __('View', 'awesome-tracker-td') . '</a>',
                     esc_attr($_REQUEST['page']),
                     'view',
                     $item['ID']
@@ -136,12 +136,12 @@ class AwesomeTrackerLogTable extends WP_AwesomeTracker_Table {
     function get_columns() {
 
         $columns = array(
-            'type' => __('Type',AwesomeTracker::TEXT_DOMAIN),
-            'details' => __('Details',AwesomeTracker::TEXT_DOMAIN),
-            'username' => __('User',AwesomeTracker::TEXT_DOMAIN),
-            'ip' => __('IP',AwesomeTracker::TEXT_DOMAIN),
-            'country' => __('Country',AwesomeTracker::TEXT_DOMAIN),
-            'date' => __('Date',AwesomeTracker::TEXT_DOMAIN)
+            'type' => __('Type','awesome-tracker-td'),
+            'details' => __('Details','awesome-tracker-td'),
+            'username' => __('User','awesome-tracker-td'),
+            'ip' => __('IP','awesome-tracker-td'),
+            'country' => __('Country','awesome-tracker-td'),
+            'date' => __('Date','awesome-tracker-td')
         );
 
         return $columns;
@@ -332,13 +332,13 @@ class AwesomeTrackerLogTable extends WP_AwesomeTracker_Table {
 
 
         $filters = array(
-            'all' => __('All records', AwesomeTracker::TEXT_DOMAIN),
-            'home' => __('Home records', AwesomeTracker::TEXT_DOMAIN),
-            '404' => __('404 records', AwesomeTracker::TEXT_DOMAIN),
-            'search_query' => __('Search page records', AwesomeTracker::TEXT_DOMAIN),
-            'archive' => __('Archive records', AwesomeTracker::TEXT_DOMAIN),
-            'post' => __('Post / Page records', AwesomeTracker::TEXT_DOMAIN),
-            'api' => __('API records', AwesomeTracker::TEXT_DOMAIN),
+            'all' => __('All records', 'awesome-tracker-td'),
+            'home' => __('Home records', 'awesome-tracker-td'),
+            '404' => __('404 records', 'awesome-tracker-td'),
+            'search_query' => __('Search page records', 'awesome-tracker-td'),
+            'archive' => __('Archive records', 'awesome-tracker-td'),
+            'post' => __('Post / Page records', 'awesome-tracker-td'),
+            'api' => __('API records', 'awesome-tracker-td'),
 
         );
 
@@ -412,12 +412,12 @@ class AwesomeTrackerLogTable extends WP_AwesomeTracker_Table {
 
         <button type="submit" name="at_csv_export" class="button csv-export" value="1">
             <span class="dashicons dashicons-download"> </span>
-            <?php _e('Export current results', AwesomeTracker::TEXT_DOMAIN); ?>
+            <?php _e('Export current results', 'awesome-tracker-td'); ?>
         </button>
         <?php if(!empty($users)) { ?>
             <div class="at_users_filter_wrap">
                 <select name="at_users_filter" class="at_chosen_user">
-                    <option value=""><?php _e('Filter by user', AwesomeTracker::TEXT_DOMAIN); ?></option>
+                    <option value=""><?php _e('Filter by user', 'awesome-tracker-td'); ?></option>
                     <?php
 
                     $current_v = isset($_REQUEST['at_users_filter']) ? $_REQUEST['at_users_filter'] : '';

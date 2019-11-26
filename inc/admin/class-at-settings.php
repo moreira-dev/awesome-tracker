@@ -17,8 +17,8 @@ if(!class_exists('AwesomeTrackerPageSettings')):
             self::$page_hook = add_submenu_page(
                 'awesome-tracker',
                 __('Awesome Tracker Settings',
-                   AwesomeTracker::TEXT_DOMAIN),
-                __('Settings', AwesomeTracker::TEXT_DOMAIN),
+                   'awesome-tracker-td'),
+                __('Settings', 'awesome-tracker-td'),
                 'manage_options',
                 self::PAGE_SLUG,
                 'AwesomeTrackerPageSettings::render'

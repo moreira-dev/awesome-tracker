@@ -1,7 +1,7 @@
 import { Component } from '@wordpress/element';
 import { Button, IconButton, Spinner, Modal } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { apiRoutes, textDomain } from '../../globals';
+import { apiRoutes } from '../../globals';
 import SelectApi from './SelectApi';
 
 class RouteLine extends Component {
@@ -128,9 +128,9 @@ class RouteLine extends Component {
 
 	addArgumentExtraOptions( args ) {
 		return {
-			0: __( 'NO ID', textDomain ),
+			0: __( 'NO ID', 'awesome-tracker-td' ),
 			...args,
-			at_other: __( 'Other Argument', textDomain ),
+			at_other: __( 'Other Argument', 'awesome-tracker-td' ),
 		};
 	}
 
@@ -154,24 +154,24 @@ class RouteLine extends Component {
 							<IconButton
 								icon="trash"
 								className="delete-button"
-								label={ __( 'Delete', textDomain ) }
+								label={ __( 'Delete', 'awesome-tracker-td' ) }
 								onClick={ this.onDelete }
 							/> :
 
 							<IconButton
 								icon="edit"
 								className="edit-button"
-								label={ __( 'Edit', textDomain ) }
+								label={ __( 'Edit', 'awesome-tracker-td' ) }
 								onClick={ this.onEdit }
 							/>
 					}
 				</td>
 				<td
-					data-title={ __( 'API Route', textDomain ) }
+					data-title={ __( 'API Route', 'awesome-tracker-td' ) }
 					className="api-route">
 					{
 						this.state.deprecated ?
-							<span className="deprecated-alert">{ __( 'This Route or method does not exist anymore', textDomain ) }</span> :
+							<span className="deprecated-alert">{ __( 'This Route or method does not exist anymore', 'awesome-tracker-td' ) }</span> :
 							null
 					}
 					{
@@ -182,7 +182,7 @@ class RouteLine extends Component {
 					{
 						this.state.error ?
 							<Modal
-								title={ __( 'Something went wrong', textDomain ) }
+								title={ __( 'Something went wrong', 'awesome-tracker-td' ) }
 								isDismissable={ true }
 								isDismissible={ true }
 								className="at-modal modal-error"
@@ -193,7 +193,7 @@ class RouteLine extends Component {
 									API Method: { this.props.route.method }
 								</p>
 								<Button isDefault onClick={ this.closeErrorModal }>
-									{ __( 'Dammit!', textDomain ) }
+									{ __( 'Dammit!', 'awesome-tracker-td' ) }
 								</Button>
 							</Modal> :
 							null
@@ -201,23 +201,23 @@ class RouteLine extends Component {
 					{
 						this.state.confirmDelete ?
 							<Modal
-								title={ __( 'Remove line?', textDomain ) }
+								title={ __( 'Remove line?', 'awesome-tracker-td' ) }
 								isDismissable={ false }
 								isDismissible={ false }
 								className="at-modal"
 								onRequestClose={ this.closeModal }>
 								<Button isDefault onClick={ this.closeModal }>
-									{ __( 'Cancel', textDomain ) }
+									{ __( 'Cancel', 'awesome-tracker-td' ) }
 								</Button>
 								<Button isPrimary onClick={ this.onDelete }>
-									{ __( 'Remove', textDomain ) }
+									{ __( 'Remove', 'awesome-tracker-td' ) }
 								</Button>
 							</Modal> :
 							null
 					}
 					<SelectApi
 						id={ this.props.id }
-						title={ __( 'Choose a REST API Route', textDomain ) }
+						title={ __( 'Choose a REST API Route', 'awesome-tracker-td' ) }
 						onChange={ this.props.onChange }
 						name="apiRoute"
 						options={ apiRoutes }
@@ -227,13 +227,13 @@ class RouteLine extends Component {
 				</td>
 
 				<td
-					data-title={ __( 'API Method', textDomain ) }
+					data-title={ __( 'API Method', 'awesome-tracker-td' ) }
 					className="api-method">
 					{ this.props.route.apiRoute ?
 
 						<SelectApi
 							id={ this.props.id }
-							title={ __( 'Choose a REST API Method', textDomain ) }
+							title={ __( 'Choose a REST API Method', 'awesome-tracker-td' ) }
 							onChange={ this.props.onChange }
 							name="method"
 							options={ this.state.deprecated ? [] : apiRoutes[ this.props.route.apiRoute ] }
@@ -244,12 +244,12 @@ class RouteLine extends Component {
 					}
 				</td>
 				<td
-					data-title={ __( 'API Argument', textDomain ) }
+					data-title={ __( 'API Argument', 'awesome-tracker-td' ) }
 					className="api-argument">
 					{ this.props.route.method ?
 						<SelectApi
 							id={ this.props.id }
-							title={ __( 'Choose argument to read as Post ID', textDomain ) }
+							title={ __( 'Choose argument to read as Post ID', 'awesome-tracker-td' ) }
 							onChange={ this.props.onChange }
 							name="apiArg"
 							editable={ this.state.editable }
@@ -269,7 +269,7 @@ class RouteLine extends Component {
 								type="text"
 								name="at_other"
 								className="at_input"
-								placeholder={ __( 'What other argument to read?', textDomain ) }
+								placeholder={ __( 'What other argument to read?', 'awesome-tracker-td' ) }
 								onChange={ this.props.onChange }
 								value={ this.props.route.at_other || '' } /> :
 							null
@@ -282,7 +282,7 @@ class RouteLine extends Component {
 								isLarge
 								onClick={ this.onSubmit }
 								{ ...this.props.canSave ? { isPrimary: true } : { disabled: true, isDefault: true } }>
-								{ __( 'Save Route', textDomain ) }
+								{ __( 'Save Route', 'awesome-tracker-td' ) }
 							</Button>	:
 							null
 					}

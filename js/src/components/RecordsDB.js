@@ -1,7 +1,7 @@
 import { Component } from '@wordpress/element';
 import { Button, Modal, SelectControl, TextControl } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { textDomain, currentSettings } from '../globals';
+import { currentSettings } from '../globals';
 import { apiSaveRecordDB } from '../api';
 import ApiTick from '../components/ApiTick';
 
@@ -109,7 +109,7 @@ class RecordsDB extends Component {
 		if ( this.state.modal ) {
 			return (
 				<Modal
-					title={ __( 'Update Database?', textDomain ) }
+					title={ __( 'Update Database?', 'awesome-tracker-td' ) }
 					isDismissable={ false }
 					isDismissible={ false }
 					className="at-modal"
@@ -117,14 +117,14 @@ class RecordsDB extends Component {
 					<p>{
 						__(
 							'WARNING! this change will remove records older than %d days from the database',
-							textDomain
+							'awesome-tracker-td'
 						).replace( '%d', this.state.daysRecordsDB )
 					}</p>
 					<Button isDefault onClick={ this.closeModal }>
-						{ __( 'Cancel', textDomain ) }
+						{ __( 'Cancel', 'awesome-tracker-td' ) }
 					</Button>
 					<Button isPrimary onClick={ this.saveFieldAPI }>
-						{ __( 'Remove', textDomain ) }
+						{ __( 'Remove', 'awesome-tracker-td' ) }
 					</Button>
 				</Modal>
 			);
@@ -145,10 +145,10 @@ class RecordsDB extends Component {
 
 	render() {
 		const selectOptions = [
-			{ label: __( '...EVER', textDomain ), value: '0' },
-			{ label: __( '1 Week', textDomain ), value: '7' },
-			{ label: __( '1 Month', textDomain ), value: '30' },
-			{ label: __( '1 Year', textDomain ), value: '365' },
+			{ label: __( '...EVER', 'awesome-tracker-td' ), value: '0' },
+			{ label: __( '1 Week', 'awesome-tracker-td' ), value: '7' },
+			{ label: __( '1 Month', 'awesome-tracker-td' ), value: '30' },
+			{ label: __( '1 Year', 'awesome-tracker-td' ), value: '365' },
 		];
 
 		if ( ! isNaN( this.state.fields.selectDaysRecordsDB ) ) {
@@ -156,7 +156,7 @@ class RecordsDB extends Component {
 			if ( ! selectOptions.some( checkValueExists ) ) {
 				selectOptions.push(
 					{
-						label: __( '%d Days', textDomain ).replace( '%d', this.state.fields.selectDaysRecordsDB ),
+						label: __( '%d Days', 'awesome-tracker-td' ).replace( '%d', this.state.fields.selectDaysRecordsDB ),
 						value: this.state.fields.selectDaysRecordsDB,
 					}
 				);
@@ -164,7 +164,7 @@ class RecordsDB extends Component {
 
 		}
 
-		selectOptions.push( { label: __( 'Set a custom value', textDomain ), value: 'custom' } );
+		selectOptions.push( { label: __( 'Set a custom value', 'awesome-tracker-td' ), value: 'custom' } );
 
 		return (
 			<div
@@ -172,7 +172,7 @@ class RecordsDB extends Component {
 				onBlur={ this.handleSaveRecordsDB }
 			>
 				<SelectControl
-					label={ __( 'Keep records in database for...', textDomain ) }
+					label={ __( 'Keep records in database for...', 'awesome-tracker-td' ) }
 					value={ this.state.fields.selectDaysRecordsDB }
 					className="at-field"
 					options={ selectOptions }
@@ -182,7 +182,7 @@ class RecordsDB extends Component {
 					<TextControl
 						type="number"
 						className="at-field"
-						label={ __( 'Set number of days to keep records for', textDomain ) }
+						label={ __( 'Set number of days to keep records for', 'awesome-tracker-td' ) }
 						value={ this.state.daysRecordsDB }
 						onChange={ this.handleChangeRecordsDB }
 					/> : null

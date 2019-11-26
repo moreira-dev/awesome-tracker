@@ -4,7 +4,6 @@ import './editor.scss';
 
 import { Component, render as wpRender } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
-import { textDomain } from '../../globals';
 import RecordsDB from '../../components/RecordsDB';
 import { Button, Modal } from '@wordpress/components';
 import { apiDeleteAllRecords } from '../../api';
@@ -38,12 +37,12 @@ class Settings extends Component {
 		this.setState( {
 			apiCall: false,
 			modal: {
-				title: __( 'Delete all tracked records', textDomain ),
+				title: __( 'Delete all tracked records', 'awesome-tracker-td' ),
 				className: 'modal-error',
-				text: __( 'WARNING! This will permanently delete all the tracked records thus far from your database.', textDomain ),
+				text: __( 'WARNING! This will permanently delete all the tracked records thus far from your database.', 'awesome-tracker-td' ),
 				onCancel: this.closeModal,
 				onSuccess: this.deleteAllRecords,
-				buttonSuccess: __( 'Delete all!', textDomain ),
+				buttonSuccess: __( 'Delete all!', 'awesome-tracker-td' ),
 			},
 		} );
 	}
@@ -74,18 +73,18 @@ class Settings extends Component {
 
 		return (
 			<div className="wrap">
-				<h2>{ __( 'Awesome Tracker Settings', textDomain ) }</h2>
+				<h2>{ __( 'Awesome Tracker Settings', 'awesome-tracker-td' ) }</h2>
 				<p className="description">
-					{ __( 'Hey what happen if I change this option? ... ... *distant screaming* Bob! Why is the homepage showing a white screen?!', textDomain ) }
+					{ __( 'Hey what happen if I change this option? ... ... *distant screaming* Bob! Why is the homepage showing a white screen?!', 'awesome-tracker-td' ) }
 				</p>
 				<div className="at-section">
 					<RecordsDB />
 				</div>
 				<div className="at-section">
 					<div className="at-danger-zone">
-						<h3>{ __( 'Danger Zone!', textDomain ) }</h3>
+						<h3>{ __( 'Danger Zone!', 'awesome-tracker-td' ) }</h3>
 						<Button isDefault isDestructive { ...isBusy } onClick={ this.handleDeleteRecords }>
-							{ __( 'Delete all tracked records', textDomain ) }
+							{ __( 'Delete all tracked records', 'awesome-tracker-td' ) }
 						</Button>
 					</div>
 				</div>
@@ -99,7 +98,7 @@ class Settings extends Component {
 							onRequestClose={ this.state.modal.onCancel }>
 							<p>{ this.state.modal.text }</p>
 							<Button isDefault { ...isBusy } onClick={ this.state.modal.onCancel }>
-								{ __( 'Cancel', textDomain ) }
+								{ __( 'Cancel', 'awesome-tracker-td' ) }
 							</Button>
 							<Button isPrimary { ...isBusy } onClick={ this.state.modal.onSuccess }>
 								{ this.state.modal.buttonSuccess }

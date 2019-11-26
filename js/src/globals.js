@@ -1,9 +1,4 @@
 /**
- * @type {string}
- */
-export const textDomain = atGlobal.textDomain;
-
-/**
  * Namespace for own plugin api calls.
  * We trim the char "/" from both sides and add a leading "/"
  *

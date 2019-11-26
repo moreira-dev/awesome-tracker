@@ -14,7 +14,7 @@ if (!class_exists('AwesomeTrackerPageRecords')):
 
         public static function init_menu() {
 
-            self::$page_hook = add_submenu_page('awesome-tracker', __('Tracked Records', AwesomeTracker::TEXT_DOMAIN), __('Tracked Records', AwesomeTracker::TEXT_DOMAIN), 'manage_options', 'awesome-tracker', 'AwesomeTrackerPageRecords::generate');
+            self::$page_hook = add_submenu_page('awesome-tracker', __('Tracked Records', 'awesome-tracker-td'), __('Tracked Records', 'awesome-tracker-td'), 'manage_options', 'awesome-tracker', 'AwesomeTrackerPageRecords::generate');
             add_action('load-' . self::$page_hook, 'AwesomeTrackerPageRecords::init');
         }
 
@@ -22,7 +22,7 @@ if (!class_exists('AwesomeTrackerPageRecords')):
 
             $option = 'per_page';
             $args = array(
-                'label' => __('Records per page', AwesomeTracker::TEXT_DOMAIN),
+                'label' => __('Records per page', 'awesome-tracker-td'),
                 'default' => 10,
                 'option' => 'edit_per_page'
             );
@@ -44,8 +44,8 @@ if (!class_exists('AwesomeTrackerPageRecords')):
             wp_enqueue_script('at-admin-js', AwesomeTracker::$plugin_url . '/js/admin.js', array('chosen-js'));
 
             $translation_array = array(
-                'all_users' => __('All the users', AwesomeTracker::TEXT_DOMAIN),
-                'no_users' => __('There are no users', AwesomeTracker::TEXT_DOMAIN)
+                'all_users' => __('All the users', 'awesome-tracker-td'),
+                'no_users' => __('There are no users', 'awesome-tracker-td')
             );
             wp_localize_script('at-admin-js', 'ati18n', $translation_array);
 
@@ -75,7 +75,7 @@ if (!class_exists('AwesomeTrackerPageRecords')):
                     <input type="hidden" name="filtering" value="<?php echo esc_attr($_REQUEST['filtering']); ?>">
                 <?php } ?>
                 <div class="wrap">
-                    <h2><?php _e('Records', AwesomeTracker::TEXT_DOMAIN); ?></h2>
+                    <h2><?php _e('Records', 'awesome-tracker-td'); ?></h2>
                     <div class="alignleft actions">
                         <?php $tableLog->views(); ?>
                     </div>
@@ -84,7 +84,7 @@ if (!class_exists('AwesomeTrackerPageRecords')):
                     </div>
                     <?php
 
-                    $tableLog->search_box(__('Search', AwesomeTracker::TEXT_DOMAIN), 'at-search-records');
+                    $tableLog->search_box(__('Search', 'awesome-tracker-td'), 'at-search-records');
                     $tableLog->display();
                     ?>
                 </div>
@@ -127,22 +127,22 @@ if (!class_exists('AwesomeTrackerPageRecords')):
 
             $visitFields = array(
                 'page_type' => array(
-                    'label' => __('Type of page', AwesomeTracker::TEXT_DOMAIN),
+                    'label' => __('Type of page', 'awesome-tracker-td'),
                     'type' => 'input',
                     'value' => $record->label
                 ),
                 'details' => array(
-                    'label' => __('Details', AwesomeTracker::TEXT_DOMAIN),
+                    'label' => __('Details', 'awesome-tracker-td'),
                     'type' => 'textarea',
                     'value' => $record->description
                 ),
                 'ip' => array(
-                    'label' => __('IP', AwesomeTracker::TEXT_DOMAIN),
+                    'label' => __('IP', 'awesome-tracker-td'),
                     'type' => 'input',
                     'value' => $record->ip
                 ),
                 'country' => array(
-                    'label' => __('Country', AwesomeTracker::TEXT_DOMAIN),
+                    'label' => __('Country', 'awesome-tracker-td'),
                     'type' => 'input',
                     'value' => $record->country_name
                 )
@@ -151,24 +151,24 @@ if (!class_exists('AwesomeTrackerPageRecords')):
             if ($record->post_id) {
                 $visitFields = array(
                     'to_post' => array(
-                        'label' => __('View complete Post', AwesomeTracker::TEXT_DOMAIN),
+                        'label' => __('View complete Post', 'awesome-tracker-td'),
                         'type' => 'link',
                         'href' => get_edit_post_link($record->post_id),
-                        'value' => __('Go to Post / Page', AwesomeTracker::TEXT_DOMAIN)
+                        'value' => __('Go to Post / Page', 'awesome-tracker-td')
                     ),
                 ) + $visitFields;
             }
 
             if ($record->taxonomy) {
                 $visitFields['taxonomy'] = array(
-                    'label' => __('Taxonomy', AwesomeTracker::TEXT_DOMAIN),
+                    'label' => __('Taxonomy', 'awesome-tracker-td'),
                     'type' => 'input',
                     'value' => $record->taxonomy
                 );
             }
 
             $visitFields['visit_time'] = array(
-                'label' => __('Time of the visit', AwesomeTracker::TEXT_DOMAIN),
+                'label' => __('Time of the visit', 'awesome-tracker-td'),
                 'type' => 'input',
                 'value' => $record->visited_formatted
             );
@@ -190,28 +190,28 @@ if (!class_exists('AwesomeTrackerPageRecords')):
 
             $userFields = array(
                 'toficha' => array(
-                    'label' => __('View complete profile', AwesomeTracker::TEXT_DOMAIN),
+                    'label' => __('View complete profile', 'awesome-tracker-td'),
                     'type' => 'link',
                     'href' => get_edit_user_link($user->ID),
-                    'value' => __('Go to user profile', AwesomeTracker::TEXT_DOMAIN)
+                    'value' => __('Go to user profile', 'awesome-tracker-td')
                 ),
                 'fullname' => array(
-                    'label' => __('Full Name', AwesomeTracker::TEXT_DOMAIN),
+                    'label' => __('Full Name', 'awesome-tracker-td'),
                     'type' => 'input',
                     'value' => $fullName
                 ),
                 'login' => array(
-                    'label' => __('Login', AwesomeTracker::TEXT_DOMAIN),
+                    'label' => __('Login', 'awesome-tracker-td'),
                     'type' => 'input',
                     'value' => $user->user_login
                 ),
                 'email' => array(
-                    'label' => __('Email', AwesomeTracker::TEXT_DOMAIN),
+                    'label' => __('Email', 'awesome-tracker-td'),
                     'type' => 'input',
                     'value' => $user->user_email
                 ),
                 'registered' => array(
-                    'label' => __('Date Registered', AwesomeTracker::TEXT_DOMAIN),
+                    'label' => __('Date Registered', 'awesome-tracker-td'),
                     'type' => 'input',
                     'value' => date(get_option('date_format') . ' '
                                     . get_option('time_format'),
@@ -248,7 +248,7 @@ if (!class_exists('AwesomeTrackerPageRecords')):
             $visitFields = self::get_visit_fields($record);
 
             $title = sprintf(
-                __('Visit from %s at %s', AwesomeTracker::TEXT_DOMAIN),
+                __('Visit from %s at %s', 'awesome-tracker-td'),
                 $ipToShow, $record->visited_formatted
             );
 
@@ -262,7 +262,7 @@ if (!class_exists('AwesomeTrackerPageRecords')):
                         <?php if ($user) { ?>
                             <div class="col">
                                 <div class="at-info">
-                                    <h2><?php _e('User information', AwesomeTracker::TEXT_DOMAIN); ?></h2>
+                                    <h2><?php _e('User information', 'awesome-tracker-td'); ?></h2>
                                     <div class="at-body">
                                         <?php
 
@@ -276,7 +276,7 @@ if (!class_exists('AwesomeTrackerPageRecords')):
                         <?php } ?>
                         <div class="col">
                             <div class="at-info">
-                                <h2><?php _e('Visit information', AwesomeTracker::TEXT_DOMAIN); ?></h2>
+                                <h2><?php _e('Visit information', 'awesome-tracker-td'); ?></h2>
                                 <div class="at-body">
                                     <?php
 

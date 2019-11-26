@@ -14,7 +14,7 @@
  * Author URI:        http://www.hintcoding.com
  * License:           GPL-3.0+
  * License URI:       http://www.gnu.org/licenses/gpl-3.0.txt
- * Text Domain:       awesome-tracker
+ * Text Domain:       awesome-tracker-td
  * Domain Path:       /languages
  */
 
@@ -54,11 +54,6 @@ Class AwesomeTracker {
      */
     const TBL_VISITS = 'awesome_tracker_visits';
 
-    /**
-     * Text domain. Unique identifier for retrieving translated strings.
-     */
-    const TEXT_DOMAIN = 'awesome-tracker';
-
 
     /**
      * Load required files and initialice plugin vars
@@ -84,9 +79,9 @@ Class AwesomeTracker {
 
         AwesomeTrackerActivator::create_tables();
 
-        update_option('awesome_tracker_version', AWESOME_TRACKER_VERSION);
-
         AwesomeTrackerActivator::register_cron();
+
+        update_option('awesome_tracker_version', AWESOME_TRACKER_VERSION);
 
     }
 
@@ -101,6 +96,10 @@ Class AwesomeTracker {
             return null;
 
         self::activate();
+    }
+
+    public static function load_textdomain() {
+        load_plugin_textdomain( 'awesome-tracker-td', FALSE, basename(self::$plugin_dir) . '/languages/' );
     }
 
 }

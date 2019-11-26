@@ -13,7 +13,7 @@ if( !class_exists ('AwesomeTrackerPageMain') ):
 
         public static function init_menu(){
 
-            self::$page_hook = add_menu_page( __('Awesome Tracker',AwesomeTracker::TEXT_DOMAIN), __('Awesome Tracker',AwesomeTracker::TEXT_DOMAIN), 'manage_options', 'awesome-tracker', '','dashicons-welcome-view-site',67 );
+            self::$page_hook = add_menu_page( __('Awesome Tracker','awesome-tracker-td'), __('Awesome Tracker','awesome-tracker-td'), 'manage_options', 'awesome-tracker', '','dashicons-welcome-view-site',67 );
             add_action('load-'.self::$page_hook, 'AwesomeTrackerPageMain::load');
 
             self::init_react();
@@ -24,7 +24,7 @@ if( !class_exists ('AwesomeTrackerPageMain') ):
         public static function load(){
             $option = 'per_page';
             $args = array(
-                'label' => __('Records per page',AwesomeTracker::TEXT_DOMAIN),
+                'label' => __('Records per page','awesome-tracker-td'),
                 'default' => 10,
                 'option' => 'edit_per_page'
             );
@@ -57,7 +57,7 @@ if( !class_exists ('AwesomeTrackerPageMain') ):
                 'awesome_tracker-block-js',
                 'atGlobal', // Array containing dynamic data for a JS Global.
                 array(
-                    'textDomain' => AwesomeTracker::TEXT_DOMAIN,
+                    'textDomain' => 'awesome-tracker-td',
                     'nameSpace' => AwesomeTrackerApi::NAME_SPACE
                 )
             );
@@ -72,6 +72,8 @@ if( !class_exists ('AwesomeTrackerPageMain') ):
                 'atSettingsGlobal',
                 array()
             );
+
+            wp_set_script_translations('awesome_tracker-block-js','awesome-tracker-td');
         }
 
 

@@ -14,6 +14,7 @@ var paths = {
         external: "js/external/**/*",
         js: "js/*.js"
     },
+    lang : "languages/**/*",
     php : "./*.php",
     license: "./LICENSE",
     readme: "./readme.txt",
@@ -34,6 +35,7 @@ function build() {
     return gulp
         .src(paths.css, base)
         .pipe(gulp.src(paths.inc,base))
+        .pipe(gulp.src(paths.lang,base))
         .pipe(gulp.src(paths.js.dist,base))
         .pipe(gulp.src(paths.js.external,base))
         .pipe(gulp.src(paths.js.js,base))

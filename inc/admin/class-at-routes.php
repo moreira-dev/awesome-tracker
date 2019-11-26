@@ -15,7 +15,7 @@ if (!class_exists('AwesomeTrackerPageRoutes')):
 
         public static function init_menu() {
 
-            self::$page_hook = add_submenu_page('awesome-tracker', __('Awesome Tracker API Routes', AwesomeTracker::TEXT_DOMAIN), __('API Routes', AwesomeTracker::TEXT_DOMAIN), 'manage_options', 'at-routes', 'AwesomeTrackerPageRoutes::render');
+            self::$page_hook = add_submenu_page('awesome-tracker', __('Awesome Tracker API Routes', 'awesome-tracker-td'), __('API Routes', 'awesome-tracker-td'), 'manage_options', 'at-routes', 'AwesomeTrackerPageRoutes::render');
 
             add_action('load-' . self::$page_hook, 'AwesomeTrackerPageRoutes::init');
 

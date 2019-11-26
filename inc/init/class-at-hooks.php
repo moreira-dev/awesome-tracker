@@ -13,6 +13,8 @@ class AwesomeTrackerHooks{
 
         add_action( AwesomeTrackerCron::HOOK_DAILY, 'AwesomeTrackerCron::remove_old_records' );
         add_action( AwesomeTrackerCron::HOOK_HOURLY, 'AwesomeTrackerCron::update_ip_data' );
+
+        add_action( 'plugins_loaded', 'AwesomeTracker::load_textdomain' );
     }
 
     public static function add_filters(){

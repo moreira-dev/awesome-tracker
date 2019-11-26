@@ -358,40 +358,40 @@ class AwesomeTracker_Record {
             'description' => ''
         );
         if ($record->api_route) {
-            $returnArray['label'] = __('API Route View', AwesomeTracker::TEXT_DOMAIN);
-            $returnArray['description'] = sprintf(__('Queried Route: %s ' . PHP_EOL . 'Method: %s', AwesomeTracker::TEXT_DOMAIN), $record->api_route, $record->api_method);
+            $returnArray['label'] = __('API Route View', 'awesome-tracker-td');
+            $returnArray['description'] = sprintf(__('Queried Route: %s ' . PHP_EOL . 'Method: %s', 'awesome-tracker-td'), $record->api_route, $record->api_method);
         }
         elseif ($record->query_404) {
-            $returnArray['label'] = __('404 Page View', AwesomeTracker::TEXT_DOMAIN);
-            $returnArray['description'] = sprintf(__('Failed query: %s', AwesomeTracker::TEXT_DOMAIN), $record->query_404);
+            $returnArray['label'] = __('404 Page View', 'awesome-tracker-td');
+            $returnArray['description'] = sprintf(__('Failed query: %s', 'awesome-tracker-td'), $record->query_404);
         }
         elseif ($record->search_query) {
-            $returnArray['label'] = __('Search Page View', AwesomeTracker::TEXT_DOMAIN);
-            $returnArray['description'] = sprintf(__('Search parameters: %s', AwesomeTracker::TEXT_DOMAIN), $record->search_query);
+            $returnArray['label'] = __('Search Page View', 'awesome-tracker-td');
+            $returnArray['description'] = sprintf(__('Search parameters: %s', 'awesome-tracker-td'), $record->search_query);
         }
         elseif ($record->archive_ptype) {
-            $returnArray['label'] = __('Archive Page View', AwesomeTracker::TEXT_DOMAIN);
-            $returnArray['description'] = sprintf(__('Archive for Post Type: %s', AwesomeTracker::TEXT_DOMAIN), $record->archive_ptype);
+            $returnArray['label'] = __('Archive Page View', 'awesome-tracker-td');
+            $returnArray['description'] = sprintf(__('Archive for Post Type: %s', 'awesome-tracker-td'), $record->archive_ptype);
         }
         elseif ($record->term_id) {
-            $returnArray['label'] = __('Archive Page View', AwesomeTracker::TEXT_DOMAIN);
-            $returnArray['description'] = sprintf(__('Archive for Term: %s', AwesomeTracker::TEXT_DOMAIN), $record->term_name);
+            $returnArray['label'] = __('Archive Page View', 'awesome-tracker-td');
+            $returnArray['description'] = sprintf(__('Archive for Term: %s', 'awesome-tracker-td'), $record->term_name);
         }
         elseif ($record->author_archive) {
-            $returnArray['label'] = __('Archive Page View', AwesomeTracker::TEXT_DOMAIN);
-            $returnArray['description'] = sprintf(__('Archive for Author: %s', AwesomeTracker::TEXT_DOMAIN), $record->author);
+            $returnArray['label'] = __('Archive Page View', 'awesome-tracker-td');
+            $returnArray['description'] = sprintf(__('Archive for Author: %s', 'awesome-tracker-td'), $record->author);
         }
         elseif ($record->date_archive) {
-            $returnArray['label'] = __('Archive Page View', AwesomeTracker::TEXT_DOMAIN);
-            $returnArray['description'] = sprintf(__('Archive for Date: %s', AwesomeTracker::TEXT_DOMAIN), $record->date_archive);
+            $returnArray['label'] = __('Archive Page View', 'awesome-tracker-td');
+            $returnArray['description'] = sprintf(__('Archive for Date: %s', 'awesome-tracker-td'), $record->date_archive);
         }
         elseif ($record->is_home) {
-            $returnArray['label'] = __('Home Page View', AwesomeTracker::TEXT_DOMAIN);
-            $returnArray['description'] = $record->post_title ? $record->post_title : __('Posts index', AwesomeTracker::TEXT_DOMAIN);
+            $returnArray['label'] = __('Home Page View', 'awesome-tracker-td');
+            $returnArray['description'] = $record->post_title ? $record->post_title : __('Posts index', 'awesome-tracker-td');
         }
         else {
-            $returnArray['label'] = __('Post / Page View', AwesomeTracker::TEXT_DOMAIN);
-            $returnArray['description'] = sprintf(__('Post / Page title: %s', AwesomeTracker::TEXT_DOMAIN), $record->post_title);
+            $returnArray['label'] = __('Post / Page View', 'awesome-tracker-td');
+            $returnArray['description'] = sprintf(__('Post / Page title: %s', 'awesome-tracker-td'), $record->post_title);
         }
 
         return $returnArray;

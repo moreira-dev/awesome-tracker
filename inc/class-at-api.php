@@ -85,7 +85,7 @@ class AwesomeTrackerApi {
         }
 
         return new WP_Error('cant_save',
-                            __('There was an error trying to save the data', AwesomeTracker::TEXT_DOMAIN)
+                            __('There was an error trying to save the data', 'awesome-tracker-td')
         );
     }
 
@@ -119,7 +119,7 @@ class AwesomeTrackerApi {
 
         if (!$routeOnDB->delete())
             return new WP_Error('cant_delete',
-                                __('There was an error trying to delete the data', AwesomeTracker::TEXT_DOMAIN)
+                                __('There was an error trying to delete the data', 'awesome-tracker-td')
             );
 
         return self::getResponse();
@@ -151,7 +151,7 @@ class AwesomeTrackerApi {
     private static function save_recordsDB($recordsDB){
 
         $error = new WP_Error('cant_save',
-                              __('There was an error trying to save the data', AwesomeTracker::TEXT_DOMAIN)
+                              __('There was an error trying to save the data', 'awesome-tracker-td')
         );
 
         if(!is_numeric($recordsDB))

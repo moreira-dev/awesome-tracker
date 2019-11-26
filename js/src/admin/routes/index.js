@@ -5,7 +5,7 @@ import './style.scss';
 import { Component, render as wpRender } from '@wordpress/element';
 import { Button } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
-import { textDomain, currentRoutes } from '../../globals';
+import { currentRoutes } from '../../globals';
 import RouteLine from '../../components/RouteLine';
 import { apiSaveRoute, apiEditRoute, apiDeleteRoute } from '../../api';
 
@@ -157,21 +157,21 @@ class Routes extends Component {
 		return (
 			<div className="no-more-tables wrap">
 				<div className="new">
-					<h2>{ __( 'Awesome Tracker API Route Rules', textDomain ) }</h2>
+					<h2>{ __( 'Awesome Tracker API Route Rules', 'awesome-tracker-td' ) }</h2>
 					<p className="description">
-						{ __( 'Here you can set the API calls you want to track', textDomain ) }
+						{ __( 'Here you can set the API calls you want to track', 'awesome-tracker-td' ) }
 					</p>
 					<Button className="new-route" isDefault isLarge onClick={ this.addNewRoute }>
-						{ __( 'New Route Rule', textDomain ) }
+						{ __( 'New Route Rule', 'awesome-tracker-td' ) }
 					</Button>
 				</div>
 				<table className="at-table">
 					<thead>
 						<tr>
 							<th className="icon-action"> </th>
-							<th className="api-route">{ __( 'API Route', textDomain ) }</th>
-							<th className="api-method">{ __( 'Api Method', textDomain ) }</th>
-							<th className="api-argument">{ __( 'Api Argument', textDomain ) }</th>
+							<th className="api-route">{ __( 'API Route', 'awesome-tracker-td' ) }</th>
+							<th className="api-method">{ __( 'Api Method', 'awesome-tracker-td' ) }</th>
+							<th className="api-argument">{ __( 'Api Argument', 'awesome-tracker-td' ) }</th>
 							<th className="button-action"> </th>
 						</tr>
 					</thead>
@@ -192,8 +192,8 @@ class Routes extends Component {
 								<tr>
 									<td />
 									<td
-										data-title={ __( 'API Route', textDomain ) }
-										colSpan={ 3 }>{ __( 'No Rules Yet', textDomain ) }
+										data-title={ __( 'API Route', 'awesome-tracker-td' ) }
+										colSpan={ 3 }>{ __( 'No Rules Yet', 'awesome-tracker-td' ) }
 									</td>
 									<td />
 								</tr> : null
