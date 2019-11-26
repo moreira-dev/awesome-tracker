@@ -22,7 +22,7 @@
 if (!defined('WPINC'))
     die;
 
-define('AWESOME_TRACKER_VERSION', '1.0.0');
+define('AWESOME_TRACKER_VERSION', '1.1.0');
 
 
 require_once plugin_dir_path(__FILE__) . 'inc/init/class-at-requires.php';
