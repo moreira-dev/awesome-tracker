@@ -38,3 +38,9 @@ export const apiSaveRecordDB = days => {
 		.then( customThen )
 		.catch( customCatch );
 };
+
+export const apiDeleteAllRecords = () => {
+	return apiFetch( { path: nameSpace + '/options', method: 'POST', data: { deleteAllRecords: true } } )
+		.then( customThen )
+		.catch( customCatch );
+};

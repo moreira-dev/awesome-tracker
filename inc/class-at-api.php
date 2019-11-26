@@ -138,6 +138,13 @@ class AwesomeTrackerApi {
             return self::save_recordsDB($recordsDB);
         }
 
+        $deleteAllRecords = $request->get_param('deleteAllRecords');
+
+        if(!is_null($deleteAllRecords) && !empty($deleteAllRecords)){
+            AwesomeTracker_Record::delete_all_records();
+            return self::getResponse();
+        }
+
         return self::getResponse();
     }
 

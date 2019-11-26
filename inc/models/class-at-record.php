@@ -471,6 +471,14 @@ class AwesomeTracker_Record {
         );
     }
 
+    public static function delete_all_records(){
+        global $wpdb;
+
+        $tableTrack = $wpdb->prefix . AwesomeTracker::TBL_VISITS;
+
+        return $wpdb->query("TRUNCATE TABLE $tableTrack");
+    }
+
     /**
      * Convert object to array.
      *
