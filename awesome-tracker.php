@@ -9,7 +9,7 @@
  * Plugin Name:       Awesome Tracker
  * Plugin URI:        http://www.hintcoding.com
  * Description:       Keep track of users behaviours
- * Version:           1.0.0
+ * Version:           1.1.0
  * Author:            HintCoding
  * Author URI:        http://www.hintcoding.com
  * License:           GPL-3.0+
