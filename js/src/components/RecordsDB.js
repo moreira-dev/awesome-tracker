@@ -152,7 +152,7 @@ class RecordsDB extends Component {
 		];
 
 		if ( ! isNaN( this.state.fields.selectDaysRecordsDB ) ) {
-			const checkValueExists = obj => obj.value === this.state.fields.selectDaysRecordsDB;
+			const checkValueExists = obj => parseInt( obj.value ) === parseInt( this.state.fields.selectDaysRecordsDB );
 			if ( ! selectOptions.some( checkValueExists ) ) {
 				selectOptions.push(
 					{

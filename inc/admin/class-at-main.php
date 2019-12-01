@@ -32,7 +32,7 @@ if( !class_exists ('AwesomeTrackerPageMain') ):
         }
 
         private static function enqueue_styles(){
-            wp_enqueue_style('at-admin-css', AwesomeTracker::$plugin_url . '/css/admin.css');
+            wp_enqueue_style('at-admin-css', AwesomeTracker::$plugin_url . '/css/admin.css', array(), AWESOME_TRACKER_VERSION);
         }
 
         private static function init_react(){
@@ -73,7 +73,7 @@ if( !class_exists ('AwesomeTrackerPageMain') ):
                 array()
             );
 
-            wp_set_script_translations('awesome_tracker-block-js','awesome-tracker-td');
+            wp_set_script_translations('awesome_tracker-block-js','awesome-tracker-td', AwesomeTracker::$plugin_dir . 'languages' );
         }
 
 

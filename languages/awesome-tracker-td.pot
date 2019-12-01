@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-11-26T11:45:22+01:00\n"
+"POT-Creation-Date: 2019-12-01T10:29:03+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0-alpha\n"
 "X-Domain: awesome-tracker-td\n"
@@ -49,82 +49,91 @@ msgstr ""
 msgid "There are no users"
 msgstr ""
 
-#: inc/admin/class-at-records.php:78
+#: inc/admin/class-at-records.php:49
+msgid "All the countries"
+msgstr ""
+
+#: inc/admin/class-at-records.php:50
+msgid "There are no countries"
+msgstr ""
+
+#: inc/admin/class-at-records.php:80
 msgid "Records"
 msgstr ""
 
-#: inc/admin/class-at-records.php:87
+#: inc/admin/class-at-records.php:89
 msgid "Search"
 msgstr ""
 
-#: inc/admin/class-at-records.php:130
+#: inc/admin/class-at-records.php:132
 msgid "Type of page"
 msgstr ""
 
-#: inc/admin/class-at-records.php:135
+#: inc/admin/class-at-records.php:137
 #: inc/tables/class-at-log-table.php:140
 msgid "Details"
 msgstr ""
 
-#: inc/admin/class-at-records.php:140
+#: inc/admin/class-at-records.php:142
 #: inc/tables/class-at-log-table.php:142
 msgid "IP"
 msgstr ""
 
-#: inc/admin/class-at-records.php:145
+#: inc/admin/class-at-records.php:147
 #: inc/tables/class-at-log-table.php:143
 msgid "Country"
 msgstr ""
 
-#: inc/admin/class-at-records.php:154
+#: inc/admin/class-at-records.php:156
 msgid "View complete Post"
 msgstr ""
 
-#: inc/admin/class-at-records.php:157
+#: inc/admin/class-at-records.php:159
 msgid "Go to Post / Page"
 msgstr ""
 
-#: inc/admin/class-at-records.php:164
+#: inc/admin/class-at-records.php:166
 msgid "Taxonomy"
 msgstr ""
 
-#: inc/admin/class-at-records.php:171
+#: inc/admin/class-at-records.php:173
 msgid "Time of the visit"
 msgstr ""
 
-#: inc/admin/class-at-records.php:193
+#: inc/admin/class-at-records.php:195
 msgid "View complete profile"
 msgstr ""
 
-#: inc/admin/class-at-records.php:196
+#: inc/admin/class-at-records.php:198
 msgid "Go to user profile"
 msgstr ""
 
-#: inc/admin/class-at-records.php:199
+#: inc/admin/class-at-records.php:201
 msgid "Full Name"
 msgstr ""
 
-#: inc/admin/class-at-records.php:204
+#: inc/admin/class-at-records.php:206
 msgid "Login"
 msgstr ""
 
-#: inc/admin/class-at-records.php:209
+#: inc/admin/class-at-records.php:211
 msgid "Email"
 msgstr ""
 
-#: inc/admin/class-at-records.php:214
+#: inc/admin/class-at-records.php:216
 msgid "Date Registered"
 msgstr ""
 
-#: inc/admin/class-at-records.php:251
-msgid "Visit from %s at %s"
+#. translators: 1: IP 2: Date
+#: inc/admin/class-at-records.php:254
+msgid "Visit from %1$s at %2$s"
 msgstr ""
 
-#: inc/admin/class-at-records.php:265
+#: inc/admin/class-at-records.php:268
 msgid "User information"
 msgstr ""
 
-#: inc/admin/class-at-records.php:279
+#: inc/admin/class-at-records.php:282
 msgid "Visit information"
 msgstr ""
 
@@ -137,6 +146,7 @@ msgid "API Routes"
 msgstr ""
 
 #: inc/admin/class-at-settings.php:19
+#: js/dist/blocks.build.js:1
 msgid "Awesome Tracker Settings"
 msgstr ""
 
@@ -232,46 +242,202 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
-#: inc/tables/class-at-log-table.php:335
+#: inc/tables/class-at-log-table.php:341
 msgid "All records"
 msgstr ""
 
-#: inc/tables/class-at-log-table.php:336
+#: inc/tables/class-at-log-table.php:342
 msgid "Home records"
 msgstr ""
 
-#: inc/tables/class-at-log-table.php:337
+#: inc/tables/class-at-log-table.php:343
 msgid "404 records"
 msgstr ""
 
-#: inc/tables/class-at-log-table.php:338
+#: inc/tables/class-at-log-table.php:344
 msgid "Search page records"
 msgstr ""
 
-#: inc/tables/class-at-log-table.php:339
+#: inc/tables/class-at-log-table.php:345
 msgid "Archive records"
 msgstr ""
 
-#: inc/tables/class-at-log-table.php:340
+#: inc/tables/class-at-log-table.php:346
 msgid "Post / Page records"
 msgstr ""
 
-#: inc/tables/class-at-log-table.php:341
+#: inc/tables/class-at-log-table.php:347
 msgid "API records"
 msgstr ""
 
-#: inc/tables/class-at-log-table.php:415
+#: inc/tables/class-at-log-table.php:409
 msgid "Export current results"
 msgstr ""
 
-#: inc/tables/class-at-log-table.php:420
+#: inc/tables/class-at-log-table.php:431
 msgid "Filter by user"
 msgstr ""
 
-#: js/src/components/RouteLine/SelectApi.js:51
+#: inc/tables/class-at-log-table.php:468
+msgid "Filter by country"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "Awesome Tracker API Route Rules"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "Here you can set the API calls you want to track"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "New Route Rule"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "API Route"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "Api Method"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "Api Argument"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "No Rules Yet"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "NO ID"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "Other Argument"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "Delete"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "Edit"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "This Route or method does not exist anymore"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "Something went wrong"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "Dammit!"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "Remove line?"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "Cancel"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "Remove"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "Choose a REST API Route"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "API Method"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "Choose a REST API Method"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "API Argument"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "Choose argument to read as Post ID"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "What other argument to read?"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "Save Route"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
 msgid "Select an option"
 msgstr ""
 
-#: js/src/components/RouteLine/selectApiRoute.js:11
-msgid "Choose a REST API Route"
+#: js/dist/blocks.build.js:1
+msgid "Delete all tracked records"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "WARNING! This will permanently delete all the tracked records thus far from your database."
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "Delete all!"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "Hey what happen if I change this option? ... ... *distant screaming* Bob! Why is the homepage showing a white screen?!"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "Danger Zone!"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "Update Database?"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "WARNING! this change will remove records older than %d days from the database"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "...EVER"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "1 Week"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "1 Month"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "1 Year"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "%d Days"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "Set a custom value"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "Keep records in database for..."
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "Set number of days to keep records for"
 msgstr ""

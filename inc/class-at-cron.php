@@ -37,7 +37,7 @@ class AwesomeTrackerCron {
                     $pageContent = file_get_contents('https://api.iplocate.app/json/' . $record->ip);
                     $parsedJson = json_decode($pageContent);
 
-                    if(!empty($parsedJson)){
+                    if(!empty($parsedJson) && !empty($parsedJson->country_code)){
                         $wpdb->update(
                             $tableTrack,
                             array(

@@ -37,15 +37,17 @@ if (!class_exists('AwesomeTrackerPageRecords')):
 
         private static function enqueue() {
 
-            wp_enqueue_script('chosen-js', AwesomeTracker::$plugin_url . '/js/external/chosen/chosen.jquery.min.js');
+            wp_enqueue_script('chosen-js', AwesomeTracker::$plugin_url . '/js/external/chosen/chosen.jquery.min.js', array(), AWESOME_TRACKER_VERSION);
 
-            wp_enqueue_style('chosen-css', AwesomeTracker::$plugin_url . '/js/external/chosen/chosen.min.css');
+            wp_enqueue_style('chosen-css', AwesomeTracker::$plugin_url . '/js/external/chosen/chosen.min.css', array(), AWESOME_TRACKER_VERSION);
 
-            wp_enqueue_script('at-admin-js', AwesomeTracker::$plugin_url . '/js/admin.js', array('chosen-js'));
+            wp_enqueue_script('at-admin-js', AwesomeTracker::$plugin_url . '/js/admin.js', array('chosen-js'), AWESOME_TRACKER_VERSION);
 
             $translation_array = array(
                 'all_users' => __('All the users', 'awesome-tracker-td'),
-                'no_users' => __('There are no users', 'awesome-tracker-td')
+                'no_users' => __('There are no users', 'awesome-tracker-td'),
+                'all_countries' => __('All the countries', 'awesome-tracker-td'),
+                'no_countries' => __('There are no countries', 'awesome-tracker-td'),
             );
             wp_localize_script('at-admin-js', 'ati18n', $translation_array);
 
@@ -248,7 +250,8 @@ if (!class_exists('AwesomeTrackerPageRecords')):
             $visitFields = self::get_visit_fields($record);
 
             $title = sprintf(
-                __('Visit from %s at %s', 'awesome-tracker-td'),
+                /* translators: 1: IP 2: Date */
+                __('Visit from %1$s at %2$s', 'awesome-tracker-td'),
                 $ipToShow, $record->visited_formatted
             );
 
