@@ -54,8 +54,25 @@ Yay, you are cool as well! If you miss some added functionality, you can suggest
 
 == Changelog ==
 
+= 1.1.0 =
+* Show country info for the visit! This info is populated once every hour
+* Allow to filter records by country
+* Settings page!
+** You can set the amount of time you want to keep your records
+** Option to clean the records database
+* i18n support
+* Translated to Spanish!!
+
 = 1.0 =
 * Track users' visits and API calls
+
+== Upgrade Notice ==
+
+= 1.1.0 =
+* Now you can filter your records by country!
+* You can set the amount of time you want to keep your records
+* Translated to Spanish!!
+
 
 == Screenshots ==
 
