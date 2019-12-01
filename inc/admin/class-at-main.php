@@ -41,7 +41,7 @@ if( !class_exists ('AwesomeTrackerPageMain') ):
                 'awesome_tracker-block-js', // Handle.
                 AwesomeTracker::$plugin_url . '/js/dist/blocks.build.js', // Block.build.js: We register the block here. Built with Webpack.
                 array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wp-api-fetch', 'wp-components' ), // Dependencies, defined above.
-                null, // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.build.js' ), // Version: filemtime — Gets file modification time.
+                AWESOME_TRACKER_VERSION,
                 true // Enqueue the script in the footer.
             );
 
@@ -50,7 +50,7 @@ if( !class_exists ('AwesomeTrackerPageMain') ):
                 'awesome_tracker-block-editor-css', // Handle.
                 AwesomeTracker::$plugin_url .'/js/dist/blocks.editor.build.css', // Block editor CSS.
                 array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
-                null // filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.editor.build.css' ) // Version: File modification time.
+                AWESOME_TRACKER_VERSION
             );
 
             wp_localize_script(
