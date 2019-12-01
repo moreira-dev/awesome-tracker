@@ -64,6 +64,7 @@ class AwesomeTrackerLogTable extends WP_AwesomeTracker_Table {
         'details' => false,
         'username' => 'u.display_name',
         'ip' => 'v.ip',
+        'country' => 'v.country_code',
         'date' => 'v.visited'
     );
 
@@ -92,6 +93,7 @@ class AwesomeTrackerLogTable extends WP_AwesomeTracker_Table {
             case 'username':
             case 'details':
             case 'ip':
+            case 'country':
             case 'date':
                 return $item[$column_name];
             default:
@@ -103,7 +105,7 @@ class AwesomeTrackerLogTable extends WP_AwesomeTracker_Table {
 
         $actions = array(
             'view' => sprintf(
-                    '<a href="?page=%s&action=%s&record=%d">' . __('View', AwesomeTracker::TEXT_DOMAIN) . '</a>',
+                    '<a href="?page=%s&action=%s&record=%d">' . __('View', 'awesome-tracker-td') . '</a>',
                     esc_attr($_REQUEST['page']),
                     'view',
                     $item['ID']
@@ -134,11 +136,12 @@ class AwesomeTrackerLogTable extends WP_AwesomeTracker_Table {
     function get_columns() {
 
         $columns = array(
-            'type' => 'Type',
-            'details' => 'Details',
-            'username' => 'User',
-            'ip' => 'IP',
-            'date' => 'Date'
+            'type' => __('Type','awesome-tracker-td'),
+            'details' => __('Details','awesome-tracker-td'),
+            'username' => __('User','awesome-tracker-td'),
+            'ip' => __('IP','awesome-tracker-td'),
+            'country' => __('Country','awesome-tracker-td'),
+            'date' => __('Date','awesome-tracker-td')
         );
 
         return $columns;
@@ -149,6 +152,7 @@ class AwesomeTrackerLogTable extends WP_AwesomeTracker_Table {
         $sortable_columns = array(
             'username' => array('username', false),
             'ip' => array('ip', false),
+            'country' => array('country', false),
             'date' => array('date', false)
         );
 
@@ -216,6 +220,7 @@ class AwesomeTrackerLogTable extends WP_AwesomeTracker_Table {
                 OR v.query_404 LIKE "%1$s" 
                 OR v.search_query LIKE "%1$s" 
                 OR v.ip LIKE "%1$s" 
+                OR v.country_name LIKE "%1$s" 
                 OR v.visited LIKE "%1$s" 
                 ) ', '%' . $wpdb->esc_like($search) . '%');
         }
@@ -223,12 +228,18 @@ class AwesomeTrackerLogTable extends WP_AwesomeTracker_Table {
         $filter = (isset($_REQUEST['filtering']) ? $_REQUEST['filtering'] : 'all');
         $where_filter = $this->get_filter_where($filter);
 
-        if (isset($_REQUEST['at_users_filter'])
-            && is_numeric($_REQUEST['at_users_filter'])
-            && $_REQUEST['at_users_filter'] > 0) {
+        $selectFilters = array(
+               'at_users_filter' => 'v.user_id',
+               'at_countries_filter' => 'v.country_code'
+        );
 
-            $where_filter .= " AND v.user_id = '{$_REQUEST['at_users_filter']}' ";
-        }
+        foreach ($selectFilters as $selectkey => $selectValue)
+            if (isset($_REQUEST[$selectkey])
+                && !empty($_REQUEST[$selectkey])){
+
+                $where_filter .= $wpdb->prepare(" AND {$selectValue} = %s ",$_REQUEST[$selectkey]);
+            }
+
 
 
         $current_page = $this->get_pagenum();
@@ -303,7 +314,8 @@ class AwesomeTrackerLogTable extends WP_AwesomeTracker_Table {
                     'user_id' => $record->user_id,
                     'post_id' => $record->post_id,
                     'date' => $record->visited_formatted,
-                    'ip' => $record->ip
+                    'ip' => $record->ip,
+                    'country' => $record->country_name
                 );
             }
 
@@ -326,13 +338,13 @@ class AwesomeTrackerLogTable extends WP_AwesomeTracker_Table {
 
 
         $filters = array(
-            'all' => __('All records', AwesomeTracker::TEXT_DOMAIN),
-            'home' => __('Home records', AwesomeTracker::TEXT_DOMAIN),
-            '404' => __('404 records', AwesomeTracker::TEXT_DOMAIN),
-            'search_query' => __('Search page records', AwesomeTracker::TEXT_DOMAIN),
-            'archive' => __('Archive records', AwesomeTracker::TEXT_DOMAIN),
-            'post' => __('Post / Page records', AwesomeTracker::TEXT_DOMAIN),
-            'api' => __('API records', AwesomeTracker::TEXT_DOMAIN),
+            'all' => __('All records', 'awesome-tracker-td'),
+            'home' => __('Home records', 'awesome-tracker-td'),
+            '404' => __('404 records', 'awesome-tracker-td'),
+            'search_query' => __('Search page records', 'awesome-tracker-td'),
+            'archive' => __('Archive records', 'awesome-tracker-td'),
+            'post' => __('Post / Page records', 'awesome-tracker-td'),
+            'api' => __('API records', 'awesome-tracker-td'),
 
         );
 
@@ -391,24 +403,32 @@ class AwesomeTrackerLogTable extends WP_AwesomeTracker_Table {
 
 
     function restrict_manage_posts() {
+        ?>
+        <button type="submit" name="at_csv_export" class="button csv-export" value="1">
+            <span class="dashicons dashicons-download"> </span>
+            <?php _e('Export current results', 'awesome-tracker-td'); ?>
+        </button>
+        <?php
+        $this->render_users_filter();
+        $this->render_country_filter();
+    }
+
+    protected function render_users_filter(){
 
         global $wpdb;
 
         $tableTrack = $wpdb->prefix . AwesomeTracker::TBL_VISITS;
 
-        $sql = "SELECT u.ID, u.display_name FROM {$wpdb->users} u WHERE u.ID IN (SELECT DISTINCT(user_id) FROM {$tableTrack}) ORDER BY display_name";
+        $sql = "SELECT u.ID, u.display_name, u.user_login 
+                        FROM {$wpdb->users} u 
+                        WHERE u.ID IN (SELECT DISTINCT(user_id) FROM {$tableTrack}) 
+                        ORDER BY display_name";
         $users = $wpdb->get_results($sql, ARRAY_A);
 
-        ?>
-
-        <button type="submit" name="at_csv_export" class="button csv-export" value="1">
-            <span class="dashicons dashicons-download"> </span>
-            <?php _e('Export current results', AwesomeTracker::TEXT_DOMAIN); ?>
-        </button>
-        <?php if(!empty($users)) { ?>
-            <div class="at_users_filter_wrap">
-                <select name="at_users_filter" class="at_chosen_user">
-                    <option value=""><?php _e('Filter by user', AwesomeTracker::TEXT_DOMAIN); ?></option>
+        if(!empty($users)) { ?>
+            <div class="at_users_filter_wrap at_filter_wrap">
+                <select name="at_users_filter" class="at_chosen_users at_chosen">
+                    <option value=""><?php _e('Filter by user', 'awesome-tracker-td'); ?></option>
                     <?php
 
                     $current_v = isset($_REQUEST['at_users_filter']) ? $_REQUEST['at_users_filter'] : '';
@@ -418,7 +438,7 @@ class AwesomeTrackerLogTable extends WP_AwesomeTracker_Table {
                             '<option value="%s"%s>%s</option>',
                             $value['ID'],
                             $value['ID'] == $current_v ? ' selected="selected"' : '',
-                            $value['display_name']
+                            $value['display_name'] . ' (' . $value['user_login'] . ')'
                         );
                     }
                     ?>
@@ -427,7 +447,43 @@ class AwesomeTrackerLogTable extends WP_AwesomeTracker_Table {
             <?php
 
         }
+    }
 
+    protected function render_country_filter(){
+
+        global $wpdb;
+
+        $tableTrack = $wpdb->prefix . AwesomeTracker::TBL_VISITS;
+
+        $sql = "SELECT country_code, country_name 
+                        FROM {$tableTrack}
+                        WHERE country_code IS NOT NULL AND country_code != ''
+                        GROUP BY country_code
+                        ORDER BY country_name";
+        $countries = $wpdb->get_results($sql, ARRAY_A);
+
+        if(!empty($countries)) { ?>
+            <div class="at_countries_filter_wrap at_filter_wrap">
+                <select name="at_countries_filter" class="at_chosen_countries at_chosen">
+                    <option value=""><?php _e('Filter by country', 'awesome-tracker-td'); ?></option>
+                    <?php
+
+                    $current_v = isset($_REQUEST['at_countries_filter']) ? $_REQUEST['at_countries_filter'] : '';
+                    foreach ($countries as $value) {
+                        printf
+                        (
+                            '<option value="%s"%s>%s</option>',
+                            $value['country_code'],
+                            $value['country_code'] == $current_v ? ' selected="selected"' : '',
+                            $value['country_name']
+                        );
+                    }
+                    ?>
+                </select>
+            </div>
+            <?php
+
+        }
     }
 
     protected function bulk_actions($which = '') {

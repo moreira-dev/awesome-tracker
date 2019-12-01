@@ -45,7 +45,7 @@ if (!class_exists('AwesomeTrackerExport')):
 
             $count = $wpdb->get_var($tableLog->sqlCount);
 
-            $output = "Type of Record;Description;User;IP;Date" . PHP_EOL;
+            $output = "Type of Record;Description;User;IP;Country;Date" . PHP_EOL;
 
             for ($offset = 0; $offset < $count; $offset += self::PERFORMANCE_LIMIT) {
                 $sql = $tableLog->sqlNoFilters
@@ -63,6 +63,7 @@ if (!class_exists('AwesomeTrackerExport')):
                         $output .= "\"" . $labelAndDescription['description'] . "\"" . ";";
                         $output .= $record->username . ";";
                         $output .= $record->ip . ";";
+                        $output .= $record->country_name . ";";
                         $output .= $record->visited;
 
                         $output .= PHP_EOL;

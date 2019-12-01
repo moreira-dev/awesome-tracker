@@ -34,7 +34,7 @@ class AwesomeTracker_Route {
         if($raw)
             return get_option(self::KEY_OPTION, array());
 
-        $routes = wp_cache_get(self::KEY_OPTION, AwesomeTracker::TEXT_DOMAIN);
+        $routes = wp_cache_get(self::KEY_OPTION, 'awesome-tracker-td');
 
         if ($routes !== false)
             return $routes;
@@ -48,7 +48,7 @@ class AwesomeTracker_Route {
                 $routes[$objRoute->ID] = $objRoute;
             }
 
-        wp_cache_set(self::KEY_OPTION, $routes, AwesomeTracker::TEXT_DOMAIN);
+        wp_cache_set(self::KEY_OPTION, $routes, 'awesome-tracker-td');
 
         return $routes;
     }
@@ -116,7 +116,7 @@ class AwesomeTracker_Route {
 
         $newRoutes[$this->ID] = $this;
 
-        wp_cache_set(self::KEY_OPTION, $newRoutes, AwesomeTracker::TEXT_DOMAIN);
+        wp_cache_set(self::KEY_OPTION, $newRoutes, 'awesome-tracker-td');
 
         return true;
 
@@ -141,7 +141,7 @@ class AwesomeTracker_Route {
 
         unset($newRoutes[$this->ID]);
 
-        wp_cache_set(self::KEY_OPTION, $newRoutes, AwesomeTracker::TEXT_DOMAIN);
+        wp_cache_set(self::KEY_OPTION, $newRoutes, 'awesome-tracker-td');
 
         return true;
 

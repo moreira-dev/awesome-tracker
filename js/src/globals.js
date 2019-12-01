@@ -1,9 +1,4 @@
 /**
- * @type {string}
- */
-export const textDomain = atGlobal.textDomain;
-
-/**
  * Namespace for own plugin api calls.
  * We trim the char "/" from both sides and add a leading "/"
  *
@@ -28,3 +23,9 @@ export const currentRoutes = atRoutesGlobal.currentRoutes;
  * @type {string}
  */
 export const DELIMITER = atRoutesGlobal.DELIMITER;
+
+/**
+ * Contains the settingss values from the DB
+ * @type {object}
+ */
+export const currentSettings = atSettingsGlobal.fields;

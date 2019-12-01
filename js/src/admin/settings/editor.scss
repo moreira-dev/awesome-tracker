@@ -1,0 +1,67 @@
+.at-section {
+	margin-top: 20px;
+}
+
+.at-field-container {
+	display: flex;
+	align-items: center;
+	margin-bottom: 15px;
+	@include for-portrait-down {
+		flex-wrap: wrap;
+	}
+
+	.at-field {
+		max-width: 300px;
+		flex-basis: 300px;
+		margin: 0 15px 15px 0;
+
+		> div {
+			margin: 0;
+		}
+
+		label, select, input {
+			display: block;
+		}
+
+		label {
+			font-weight: 600;
+		}
+	}
+}
+
+.at-api-tick {
+	border-radius: 50%;
+	align-self: flex-end;
+	margin-bottom: 19px;
+
+	&.at-api-fail {
+		color: $red;
+		border: 2px solid $red;
+	}
+
+	&.at-api-success {
+		color: $green;
+		border: 2px solid $green;
+		padding-right: 1px;
+	}
+}
+
+.at-danger-zone {
+	max-width: 300px;
+	border: 1px solid $grayDark;
+	border-radius: 2px;
+	color: $red;
+	padding: 20px 15px 25px;
+	margin-top: 50px;
+
+	h2, h3 {
+		margin-top: 0;
+		margin-bottom: 35px;
+		color: $red;
+	}
+
+	.is-destructive {
+		color: $red;
+		border-color: $red;
+	}
+}

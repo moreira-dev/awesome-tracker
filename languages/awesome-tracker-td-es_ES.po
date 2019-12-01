@@ -1,0 +1,453 @@
+# Copyright (C) 2019 HintCoding
+# This file is distributed under the same license as the Awesome Tracker plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Awesome Tracker 1.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/awesome-tracker\n"
+"POT-Creation-Date: 2019-12-01T10:29:03+01:00\n"
+"PO-Revision-Date: 2019-12-01 20:30+1100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.4\n"
+"X-Domain: awesome-tracker-td\n"
+
+#. Plugin Name of the plugin
+#: inc/admin/class-at-main.php:16
+msgid "Awesome Tracker"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "http://www.hintcoding.com"
+msgstr ""
+
+#. Description of the plugin
+msgid "Keep track of users behaviours"
+msgstr "Monitoriza el comportamiento de los usuarios"
+
+#. Author of the plugin
+msgid "HintCoding"
+msgstr ""
+
+#: inc/admin/class-at-main.php:27 inc/admin/class-at-records.php:25
+msgid "Records per page"
+msgstr "Visitas por pagina"
+
+#: inc/admin/class-at-records.php:17
+msgid "Tracked Records"
+msgstr "Registro de visitas"
+
+#: inc/admin/class-at-records.php:47
+msgid "All the users"
+msgstr "Todos los usuarios"
+
+#: inc/admin/class-at-records.php:48
+msgid "There are no users"
+msgstr "No hay usuarios"
+
+#: inc/admin/class-at-records.php:49
+msgid "All the countries"
+msgstr "Todos los países"
+
+#: inc/admin/class-at-records.php:50
+msgid "There are no countries"
+msgstr "No hay países"
+
+#: inc/admin/class-at-records.php:80
+msgid "Records"
+msgstr "Visitas"
+
+#: inc/admin/class-at-records.php:89
+msgid "Search"
+msgstr "Buscar"
+
+#: inc/admin/class-at-records.php:132
+msgid "Type of page"
+msgstr "Tipo de página"
+
+#: inc/admin/class-at-records.php:137 inc/tables/class-at-log-table.php:140
+msgid "Details"
+msgstr "Detalles"
+
+#: inc/admin/class-at-records.php:142 inc/tables/class-at-log-table.php:142
+msgid "IP"
+msgstr ""
+
+#: inc/admin/class-at-records.php:147 inc/tables/class-at-log-table.php:143
+msgid "Country"
+msgstr "País"
+
+#: inc/admin/class-at-records.php:156
+msgid "View complete Post"
+msgstr "Ver Post completo"
+
+#: inc/admin/class-at-records.php:159
+msgid "Go to Post / Page"
+msgstr "Ir al Post / Página"
+
+#: inc/admin/class-at-records.php:166
+msgid "Taxonomy"
+msgstr "Taxonomía"
+
+#: inc/admin/class-at-records.php:173
+msgid "Time of the visit"
+msgstr "Hora de la visita"
+
+#: inc/admin/class-at-records.php:195
+msgid "View complete profile"
+msgstr "Ver perfil completo"
+
+#: inc/admin/class-at-records.php:198
+msgid "Go to user profile"
+msgstr "Ir al perfil del usuario"
+
+#: inc/admin/class-at-records.php:201
+msgid "Full Name"
+msgstr "Nombre Completo"
+
+#: inc/admin/class-at-records.php:206
+msgid "Login"
+msgstr ""
+
+#: inc/admin/class-at-records.php:211
+msgid "Email"
+msgstr ""
+
+#: inc/admin/class-at-records.php:216
+msgid "Date Registered"
+msgstr "Fecha de registro"
+
+#. translators: 1: IP 2: Date
+#: inc/admin/class-at-records.php:254
+msgid "Visit from %1$s at %2$s"
+msgstr "Visita de %1$s a las %2$s"
+
+#: inc/admin/class-at-records.php:268
+msgid "User information"
+msgstr "Información del usuario"
+
+#: inc/admin/class-at-records.php:282
+msgid "Visit information"
+msgstr "Información de la visita"
+
+#: inc/admin/class-at-routes.php:18
+msgid "Awesome Tracker API Routes"
+msgstr "Rutas de API de Awesome Tracker"
+
+#: inc/admin/class-at-routes.php:18
+msgid "API Routes"
+msgstr "Rutas de API"
+
+#: inc/admin/class-at-settings.php:19 js/dist/blocks.build.js:1
+msgid "Awesome Tracker Settings"
+msgstr "Opciones de Awesome Tracker"
+
+#: inc/admin/class-at-settings.php:21
+msgid "Settings"
+msgstr "Opciones"
+
+#: inc/class-at-api.php:88 inc/class-at-api.php:154
+msgid "There was an error trying to save the data"
+msgstr "Hubo un error al guardar los datos"
+
+#: inc/class-at-api.php:122
+msgid "There was an error trying to delete the data"
+msgstr "Hubo un error al borrar los datos"
+
+#: inc/models/class-at-record.php:361
+msgid "API Route View"
+msgstr "Visita de API"
+
+#: inc/models/class-at-record.php:362
+msgid "Queried Route: %s "
+msgstr "Ruta servida: %s "
+
+#: inc/models/class-at-record.php:365
+msgid "404 Page View"
+msgstr "Visita de página 404"
+
+#: inc/models/class-at-record.php:366
+msgid "Failed query: %s"
+msgstr "Petición fallida: %s"
+
+#: inc/models/class-at-record.php:369
+msgid "Search Page View"
+msgstr "Visita de Página de busqueda"
+
+#: inc/models/class-at-record.php:370
+msgid "Search parameters: %s"
+msgstr "Parámetros buscados: %s"
+
+#: inc/models/class-at-record.php:373 inc/models/class-at-record.php:377
+#: inc/models/class-at-record.php:381 inc/models/class-at-record.php:385
+msgid "Archive Page View"
+msgstr "Visita de Página de archivo"
+
+#: inc/models/class-at-record.php:374
+msgid "Archive for Post Type: %s"
+msgstr "Archivo para el Post Type: %s"
+
+#: inc/models/class-at-record.php:378
+msgid "Archive for Term: %s"
+msgstr "Archivo para el término: %s"
+
+#: inc/models/class-at-record.php:382
+msgid "Archive for Author: %s"
+msgstr "Archivo para el autor: %s"
+
+#: inc/models/class-at-record.php:386
+msgid "Archive for Date: %s"
+msgstr "Archivo para la fecha: %s"
+
+#: inc/models/class-at-record.php:389
+msgid "Home Page View"
+msgstr "Visita de portada"
+
+#: inc/models/class-at-record.php:390
+msgid "Posts index"
+msgstr "Indice de posts"
+
+#: inc/models/class-at-record.php:393
+msgid "Post / Page View"
+msgstr "Visita de Post / Página"
+
+#: inc/models/class-at-record.php:394
+msgid "Post / Page title: %s"
+msgstr "Título de Post / Pagina: %s"
+
+#: inc/tables/class-at-log-table.php:108
+msgid "View"
+msgstr "Visita"
+
+#: inc/tables/class-at-log-table.php:139
+msgid "Type"
+msgstr "Tipo"
+
+#: inc/tables/class-at-log-table.php:141
+msgid "User"
+msgstr "Usuario"
+
+#: inc/tables/class-at-log-table.php:144
+msgid "Date"
+msgstr "Fecha"
+
+#: inc/tables/class-at-log-table.php:341
+msgid "All records"
+msgstr "Todas las visitas"
+
+#: inc/tables/class-at-log-table.php:342
+msgid "Home records"
+msgstr "Visitas de portada"
+
+#: inc/tables/class-at-log-table.php:343
+msgid "404 records"
+msgstr "Visitas de 404"
+
+#: inc/tables/class-at-log-table.php:344
+msgid "Search page records"
+msgstr "Visitas de búsqueda"
+
+#: inc/tables/class-at-log-table.php:345
+msgid "Archive records"
+msgstr "Visitas de archivo"
+
+#: inc/tables/class-at-log-table.php:346
+msgid "Post / Page records"
+msgstr "Visitas de Post / Página"
+
+#: inc/tables/class-at-log-table.php:347
+msgid "API records"
+msgstr "Visitas de API"
+
+#: inc/tables/class-at-log-table.php:409
+msgid "Export current results"
+msgstr "Exportar resultados"
+
+#: inc/tables/class-at-log-table.php:431
+msgid "Filter by user"
+msgstr "Filtrar por usuario"
+
+#: inc/tables/class-at-log-table.php:468
+msgid "Filter by country"
+msgstr "Filtrar por país"
+
+#: js/dist/blocks.build.js:1
+#, fuzzy
+#| msgid "Awesome Tracker API Routes"
+msgid "Awesome Tracker API Route Rules"
+msgstr "Rutas de API de Awesome Tracker"
+
+#: js/dist/blocks.build.js:1
+msgid "Here you can set the API calls you want to track"
+msgstr "Aquí puedes establecer las llamadas API que quieres monitorizar"
+
+#: js/dist/blocks.build.js:1
+msgid "New Route Rule"
+msgstr "Nueva Regla de Ruta"
+
+#: js/dist/blocks.build.js:1
+#, fuzzy
+#| msgid "API Routes"
+msgid "API Route"
+msgstr "Rutas de API"
+
+#: js/dist/blocks.build.js:1
+msgid "Api Method"
+msgstr "Método de API"
+
+#: js/dist/blocks.build.js:1
+msgid "Api Argument"
+msgstr "Argumentos"
+
+#: js/dist/blocks.build.js:1
+msgid "No Rules Yet"
+msgstr "No hay reglas definidas todavía"
+
+#: js/dist/blocks.build.js:1
+msgid "NO ID"
+msgstr ""
+
+#: js/dist/blocks.build.js:1
+msgid "Other Argument"
+msgstr "Otro argumento"
+
+#: js/dist/blocks.build.js:1
+msgid "Delete"
+msgstr "Borrar"
+
+#: js/dist/blocks.build.js:1
+msgid "Edit"
+msgstr "Editar"
+
+#: js/dist/blocks.build.js:1
+msgid "This Route or method does not exist anymore"
+msgstr "Esta ruta o método ya no está disponible"
+
+#: js/dist/blocks.build.js:1
+msgid "Something went wrong"
+msgstr "Hubo un error"
+
+#: js/dist/blocks.build.js:1
+msgid "Dammit!"
+msgstr "Mecachis!"
+
+#: js/dist/blocks.build.js:1
+msgid "Remove line?"
+msgstr "¿Borrar linea?"
+
+#: js/dist/blocks.build.js:1
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: js/dist/blocks.build.js:1
+msgid "Remove"
+msgstr "Borrar"
+
+#: js/dist/blocks.build.js:1
+msgid "Choose a REST API Route"
+msgstr "Elige una Ruta de API REST"
+
+#: js/dist/blocks.build.js:1
+msgid "API Method"
+msgstr "Método de API"
+
+#: js/dist/blocks.build.js:1
+#, fuzzy
+#| msgid "Choose a REST API Route"
+msgid "Choose a REST API Method"
+msgstr "Elige una Ruta de API REST"
+
+#: js/dist/blocks.build.js:1
+msgid "API Argument"
+msgstr "Argumento"
+
+#: js/dist/blocks.build.js:1
+msgid "Choose argument to read as Post ID"
+msgstr "Escoge un argumento para usar como Post ID"
+
+#: js/dist/blocks.build.js:1
+msgid "What other argument to read?"
+msgstr "¿Qué otro argumento leer?"
+
+#: js/dist/blocks.build.js:1
+msgid "Save Route"
+msgstr "Guardar Ruta"
+
+#: js/dist/blocks.build.js:1
+msgid "Select an option"
+msgstr "Seleciona una opción"
+
+#: js/dist/blocks.build.js:1
+msgid "Delete all tracked records"
+msgstr "Borrar todos los registros guardados"
+
+#: js/dist/blocks.build.js:1
+msgid ""
+"WARNING! This will permanently delete all the tracked records thus far from "
+"your database."
+msgstr ""
+"¡OJITO! Esto borrará permanentemente todos los registros monitorizados hasta "
+"la fecha."
+
+#: js/dist/blocks.build.js:1
+msgid "Delete all!"
+msgstr "Borra todo!"
+
+#: js/dist/blocks.build.js:1
+msgid ""
+"Hey what happen if I change this option? ... ... *distant screaming* Bob! "
+"Why is the homepage showing a white screen?!"
+msgstr ""
+"¡Anda! Me pregunto que pasa si cambio esta opción ... ... *gritos lejanos* "
+"¡¡Manolo!! ¿¡Por que la web se ve en blanco!?"
+
+#: js/dist/blocks.build.js:1
+msgid "Danger Zone!"
+msgstr "¡Zona Peligrosa!"
+
+#: js/dist/blocks.build.js:1
+msgid "Update Database?"
+msgstr "¿Actualizar base de datos?"
+
+#: js/dist/blocks.build.js:1
+msgid ""
+"WARNING! this change will remove records older than %d days from the database"
+msgstr ""
+"¡OJITO! este cambio elimina todos los registros con una antigüedad mayor a "
+"%d días de la base de datos"
+
+#: js/dist/blocks.build.js:1
+msgid "...EVER"
+msgstr "...SIEMPRE"
+
+#: js/dist/blocks.build.js:1
+msgid "1 Week"
+msgstr "1 Semana"
+
+#: js/dist/blocks.build.js:1
+msgid "1 Month"
+msgstr "1 Mes"
+
+#: js/dist/blocks.build.js:1
+msgid "1 Year"
+msgstr "1 Año"
+
+#: js/dist/blocks.build.js:1
+msgid "%d Days"
+msgstr "%d Días"
+
+#: js/dist/blocks.build.js:1
+msgid "Set a custom value"
+msgstr "Periodo personalizado"
+
+#: js/dist/blocks.build.js:1
+msgid "Keep records in database for..."
+msgstr "Mantener los registros en la base de datos por..."
+
+#: js/dist/blocks.build.js:1
+msgid "Set number of days to keep records for"
+msgstr "Establece el número de días que quieres mantener los registros"

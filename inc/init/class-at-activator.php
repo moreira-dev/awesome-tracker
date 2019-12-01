@@ -27,10 +27,14 @@ class AwesomeTrackerActivator {
               api_method varchar(50) NULL,
               page smallint(1) unsigned DEFAULT 0 NOT NULL,
               ip varchar(45) NOT NULL,
+              country_code varchar(5) NULL,
+              country_name varchar(100) NULL,
+              ip_data text NULL,
               visited datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
               PRIMARY KEY (ID),
               KEY user_id (user_id),
-              KEY ip (ip)
+              KEY ip (ip),
+              KEY country_code (country_code)
             ) $charset_collate;";
 
         dbDelta($sql);
@@ -48,6 +52,30 @@ class AwesomeTrackerActivator {
         $table_visits = $wpdb->prefix . AwesomeTracker::TBL_VISITS;
 
         $wpdb->query("DROP TABLE IF EXISTS {$table_visits}");
+
+        self::unregister_cron();
+
+    }
+
+    public static function register_cron() {
+
+        if(!wp_next_scheduled(AwesomeTrackerCron::HOOK_DAILY)){
+            wp_schedule_event(time(), 'daily', AwesomeTrackerCron::HOOK_DAILY);
+        }
+        if(!wp_next_scheduled(AwesomeTrackerCron::HOOK_HOURLY)){
+            wp_schedule_event(time(), 'hourly', AwesomeTrackerCron::HOOK_HOURLY);
+        }
+    }
+
+    public static function unregister_cron() {
+
+        $hooksToRemove = array(AwesomeTrackerCron::HOOK_DAILY, AwesomeTrackerCron::HOOK_HOURLY);
+
+        foreach ($hooksToRemove as $removeHook) {
+            $timestamp = wp_next_scheduled($removeHook);
+            wp_unschedule_event($timestamp, $removeHook);
+            wp_clear_scheduled_hook($removeHook);
+        }
 
     }
 

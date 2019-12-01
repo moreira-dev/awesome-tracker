@@ -1,6 +1,6 @@
 <?php
 
-Class AwesomeTrackerApi {
+class AwesomeTrackerApi {
 
     /**
      * Namespace for this API
@@ -12,6 +12,7 @@ Class AwesomeTrackerApi {
         register_rest_route(self::NAME_SPACE, '/route/', array(
             'methods' => array('POST'),
             'callback' => 'AwesomeTrackerApi::add_route',
+            'permission_callback' => 'AwesomeTrackerApi::check_permission',
             'args' => array(
                 'route' => array(
                     'required' => true,
@@ -23,6 +24,7 @@ Class AwesomeTrackerApi {
         register_rest_route(self::NAME_SPACE, '/route/', array(
             'methods' => array('PUT', 'PATCH'),
             'callback' => 'AwesomeTrackerApi::update_route',
+            'permission_callback' => 'AwesomeTrackerApi::check_permission',
             'args' => array(
                 'route' => array(
                     'required' => true,
@@ -34,12 +36,19 @@ Class AwesomeTrackerApi {
         register_rest_route(self::NAME_SPACE, '/route/', array(
             'methods' => array('DELETE'),
             'callback' => 'AwesomeTrackerApi::delete_route',
+            'permission_callback' => 'AwesomeTrackerApi::check_permission',
             'args' => array(
                 'route' => array(
                     'required' => true,
                     'validate_callback' => 'AwesomeTrackerApi::validate_route_ID'
                 )
             )
+        ));
+
+        register_rest_route(self::NAME_SPACE, '/options/', array(
+            'methods' => array('POST'),
+            'callback' => 'AwesomeTrackerApi::save_settings',
+            'permission_callback' => 'AwesomeTrackerApi::check_permission'
         ));
     }
 
@@ -59,11 +68,6 @@ Class AwesomeTrackerApi {
      */
     public static function add_route($request) {
 
-        $response = array(
-            'status' => 'OK',
-            'payload' => array()
-        );
-
         $routeToSave = $request->get_param('route');
 
         $routeObj = AwesomeTracker_Route::get_instance($routeToSave['apiRoute'], $routeToSave['method']);
@@ -76,13 +80,12 @@ Class AwesomeTrackerApi {
         $routeObj->apiArg = $apiArg;
 
         if ($routeObj->save()) {
-            $response['payload']['ID'] = $routeObj->ID;
 
-            return $response;
+            return self::getResponse(array('ID' => $routeObj->ID));
         }
 
         return new WP_Error('cant_save',
-                            __('There was an error trying to save the data', AwesomeTracker::TEXT_DOMAIN)
+                            __('There was an error trying to save the data', 'awesome-tracker-td')
         );
     }
 
@@ -92,11 +95,6 @@ Class AwesomeTrackerApi {
      * @return array|WP_Error
      */
     public static function update_route($request) {
-
-        $response = array(
-            'status' => 'OK',
-            'payload' => array()
-        );
 
         $response = self::delete_route($request);
 
@@ -115,19 +113,70 @@ Class AwesomeTrackerApi {
      */
     public static function delete_route($request) {
 
-        $response = array(
-            'status' => 'OK',
-            'payload' => ''
-        );
-
         $routeToSave = $request->get_param('route');
 
         $routeOnDB = AwesomeTracker_Route::get_instance($routeToSave['ID']);
 
         if (!$routeOnDB->delete())
             return new WP_Error('cant_delete',
-                                __('There was an error trying to delete the data', AwesomeTracker::TEXT_DOMAIN)
+                                __('There was an error trying to delete the data', 'awesome-tracker-td')
             );
+
+        return self::getResponse();
+    }
+
+    /**
+     * @param WP_REST_Request $request
+     *
+     * @return array|WP_Error
+     */
+    public static function save_settings($request){
+
+        $recordsDB = $request->get_param('recordsDB');
+
+        if(!is_null($recordsDB)){
+            return self::save_recordsDB($recordsDB);
+        }
+
+        $deleteAllRecords = $request->get_param('deleteAllRecords');
+
+        if(!is_null($deleteAllRecords) && !empty($deleteAllRecords)){
+            AwesomeTracker_Record::delete_all_records();
+            return self::getResponse();
+        }
+
+        return self::getResponse();
+    }
+
+    private static function save_recordsDB($recordsDB){
+
+        $error = new WP_Error('cant_save',
+                              __('There was an error trying to save the data', 'awesome-tracker-td')
+        );
+
+        if(!is_numeric($recordsDB))
+            return $error;
+
+        $recordsDB = +$recordsDB;
+        if(!is_int($recordsDB) || $recordsDB < 0)
+            return $error;
+
+        AwesomeTrackerOptions::set_daysToPurgeDB($recordsDB);
+
+        if($recordsDB > 0){
+
+            AwesomeTracker_Record::delete_old_recordsDB($recordsDB);
+
+        }
+
+        return self::getResponse();
+    }
+
+    private static function getResponse($payload = ''){
+        $response = array(
+            'status' => 'OK',
+            'payload' => $payload
+        );
 
         return $response;
     }
@@ -152,6 +201,19 @@ Class AwesomeTrackerApi {
         }
 
         return $to_js_routes;
+    }
+
+    /**
+     * @param WP_REST_Request $request  Request used to generate the response.
+     *
+     * @return bool
+     */
+    public static function check_permission($request){
+        $allow = false;
+        if(is_user_logged_in() && current_user_can('manage_options'))
+            $allow = true;
+
+        return apply_filters('awesometracker_api_permission_callback', $allow, $request);
     }
 
     public static function validate_route($route, $request, $key) {

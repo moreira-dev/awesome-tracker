@@ -9,12 +9,12 @@
  * Plugin Name:       Awesome Tracker
  * Plugin URI:        http://www.hintcoding.com
  * Description:       Keep track of users behaviours
- * Version:           1.0.0
+ * Version:           1.1.0
  * Author:            HintCoding
  * Author URI:        http://www.hintcoding.com
  * License:           GPL-3.0+
  * License URI:       http://www.gnu.org/licenses/gpl-3.0.txt
- * Text Domain:       awesome-tracker
+ * Text Domain:       awesome-tracker-td
  * Domain Path:       /languages
  */
 
@@ -22,7 +22,7 @@
 if (!defined('WPINC'))
     die;
 
-define('AWESOME_TRACKER_VERSION', '1.0.0');
+define('AWESOME_TRACKER_VERSION', '1.1.0');
 
 
 require_once plugin_dir_path(__FILE__) . 'inc/init/class-at-requires.php';
@@ -54,11 +54,6 @@ Class AwesomeTracker {
      */
     const TBL_VISITS = 'awesome_tracker_visits';
 
-    /**
-     * Text domain. Unique identifier for retrieving translated strings.
-     */
-    const TEXT_DOMAIN = 'awesome-tracker';
-
 
     /**
      * Load required files and initialice plugin vars
@@ -75,11 +70,16 @@ Class AwesomeTracker {
 
         AwesomeTrackerHooks::add_actions();
         AwesomeTrackerHooks::add_filters();
+
+        add_action( 'plugins_loaded', 'AwesomeTracker::update');
+
     }
 
     public static function activate() {
 
         AwesomeTrackerActivator::create_tables();
+
+        AwesomeTrackerActivator::register_cron();
 
         update_option('awesome_tracker_version', AWESOME_TRACKER_VERSION);
 
@@ -89,6 +89,17 @@ Class AwesomeTracker {
 
         AwesomeTrackerActivator::uninstall();
 
+    }
+
+    public static function update(){
+        if ( get_option( 'awesome_tracker_version' ) == AWESOME_TRACKER_VERSION)
+            return null;
+
+        self::activate();
+    }
+
+    public static function load_textdomain() {
+        load_plugin_textdomain( 'awesome-tracker-td', FALSE, basename(self::$plugin_dir) . '/languages/' );
     }
 
 }

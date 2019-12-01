@@ -1,5 +1,4 @@
 import { __ } from '@wordpress/i18n';
-import { textDomain } from '../../globals';
 
 const SelectApi = props => {
 	let valueText = props.value;
@@ -49,7 +48,7 @@ SelectApi.defaultProps = {
 	className: 'at_select',
 	name: '',
 	onChange: null,
-	title: __( 'Select an option', textDomain ),
+	title: __( 'Select an option', 'awesome-tracker-td' ),
 	indexAsText: false,
 	useProperty: false,
 	value: '',

@@ -2,29 +2,37 @@
 
 defined('ABSPATH') or die();
 
-if (!class_exists('AwesomeTrackerPageRoutes')):
-    class AwesomeTrackerPageRoutes {
+if(!class_exists('AwesomeTrackerPageSettings')):
+    class AwesomeTrackerPageSettings {
 
         /**
-         * Page hook.
-         *
          * @var string
          */
         protected static $page_hook;
 
+        const PAGE_SLUG = 'awesometracker-settings';
 
         public static function init_menu() {
 
-            self::$page_hook = add_submenu_page('awesome-tracker', __('Awesome Tracker API Routes', 'awesome-tracker-td'), __('API Routes', 'awesome-tracker-td'), 'manage_options', 'at-routes', 'AwesomeTrackerPageRoutes::render');
+            self::$page_hook = add_submenu_page(
+                'awesome-tracker',
+                __('Awesome Tracker Settings',
+                   'awesome-tracker-td'),
+                __('Settings', 'awesome-tracker-td'),
+                'manage_options',
+                self::PAGE_SLUG,
+                'AwesomeTrackerPageSettings::render'
+            );
 
-            add_action('load-' . self::$page_hook, 'AwesomeTrackerPageRoutes::init');
+            add_action('load-' . self::$page_hook, 'AwesomeTrackerPageSettings::init');
 
         }
 
         public static function render() {
 
             ?>
-            <div id="at-routes"></div>
+            <div id="at-settings">
+            </div>
             <?php
 
         }
@@ -47,10 +55,11 @@ if (!class_exists('AwesomeTrackerPageRoutes')):
 
             wp_localize_script(
                 'awesome_tracker-block-js',
-                'atRoutesGlobal', // Array containing dynamic data for a JS Global.
+                'atSettingsGlobal',
                 array(
-                    'apiRoutes' => AwesomeTrackerApi::get_api_routelist(),
-                    'currentRoutes' => AwesomeTracker_Route::get_current_routes(),
+                    'fields' => array(
+                        'recordsDB' => get_option('at_settings_recordsDB', 0)
+                    )
                 )
             );
         }
